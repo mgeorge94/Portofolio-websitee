@@ -113,7 +113,7 @@ const autoWriteText = (chapter) => {
 
       setTimeout(function () {
         autoWriteText(chapter);
-      }, 50);
+      }, 30);
     }
   });
 };
@@ -135,17 +135,17 @@ const normalBodyEvens = () => {
 
 //turn On Auto write Text
 /////////////////////////////////
-// const listenForMouseEnter = () => {
-//   const chapters = document.querySelectorAll(".chapter");
-//   chapters.forEach(function (chapter) {
-//     chapter.addEventListener("mouseenter", () => {
-//       if (!chapter.classList.contains("done")) {
-//         autoWriteText(chapter);
-//       }
-//     });
-//   });
-// };
-// listenForMouseEnter();
+const listenForMouseEnter = () => {
+  const chapters = document.querySelectorAll(".chapter");
+  chapters.forEach(function (chapter) {
+    chapter.addEventListener("wheel", () => {
+      if (!chapter.classList.contains("done")) {
+        autoWriteText(chapter);
+      }
+    });
+  });
+};
+listenForMouseEnter();
 
 // progressbar
 
@@ -172,3 +172,42 @@ const setValuesForCircle = () => {
 };
 setValuesForCircle();
 pageScroll(0);
+
+const seeCertificates = () => {
+  const certificateBtn = document.querySelector(".fa-file-alt");
+  const certificatesContainer = document.querySelector(".diplomas-container");
+  const certificates = document.querySelectorAll(".box>img");
+  const boxes = document.querySelectorAll(".box");
+
+  certificateBtn.addEventListener("click", () => {
+    certificatesContainer.style.display = "grid";
+
+    boxes.forEach((box) => {
+      box.addEventListener("click", (event) => {
+        event.stopPropagation();
+        removeCertificateActiveClass();
+        box.classList.add("active");
+        pageScroll(1800);
+      });
+    });
+  });
+};
+seeCertificates();
+
+const removeCertificateActiveClass = () => {
+  const boxes = document.querySelectorAll(".box");
+
+  boxes.forEach((box) => {
+    box.classList.remove("active");
+  });
+};
+
+const hideCertificates = () => {
+  const certificateContainer = document.querySelector(".diplomas-container");
+
+  certificateContainer.addEventListener("click", () => {
+    certificateContainer.style.display = "none";
+    removeCertificateActiveClass();
+  });
+};
+hideCertificates();
