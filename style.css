@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* random acent color variable */
+:root {
+  --accent-color: red;
+}
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+/* nav  bar*/
+.nav-container {
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 3;
+  padding: 1rem 3rem;
+}
+.nav-container ul {
+  display: flex;
+  list-style: none;
+  right: 2rem;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: white;
+}
+.nav-container li {
+  padding-left: 2rem;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+.nav-container li:hover {
+  color: var(--accent-color);
+}
+/* Chapter Slides */
+
+.header {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 80%);
+  height: 45rem;
+  z-index: 4;
+  top: 0;
+  display: block;
+  background-color: rgb(31, 31, 31);
+  height: 30rem;
+  width: 100vw;
+  position: relative;
+}
+.chapter-container {
+  filter: drop-shadow(0px 17px 5px rgba(0, 0, 0, 0.6));
+  position: relative;
+}
+
+.chapter-left {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  background-attachment: fixed;
+  transform: translateX(-400%);
+  transition: transform 0.4s ease-in-out;
+}
+.chapter-right {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 80%);
+  background-attachment: fixed;
+  transform: translateX(400%);
+  transition: transform 0.4s ease-in-out;
+}
+.chapter.show {
+  transform: translateX(0);
+}
+.chapter {
+  top: 0;
+  display: block;
+  background-color: rgb(31, 31, 31);
+  height: 30rem;
+  width: 100vw;
+  position: relative;
+}
+
+.title {
+  font-family: "Six Caps";
+  color: rgb(255, 255, 255);
+  font-size: 8rem;
+  padding-left: 2rem;
+
+  position: absolute;
+  padding-top: 8rem;
+  animation: showTitle 2s ease-in-out forwards;
+  display: flex;
+  position: absolute;
+}
+.subtitle {
+  padding-top: 13rem;
+  margin-left: 2rem;
+  color: #616161;
+  z-index: 10;
+  animation: showTitle 2s ease-in-out forwards;
+  animation-delay: 1s;
+  display: flex;
+  opacity: 0;
+}
+#title-name,
+#story-word {
+  font-size: 8rem;
+  font-weight: 200;
+  padding-left: 1rem;
+  z-index: 99;
+  position: relative;
+}
+#story-word {
+  color: var(--accent-color);
+}
+.paragraph {
+  font-size: 1.4rem;
+  font-weight: 200;
+  font-style: italic;
+  color: white;
+
+  width: 30%;
+  position: relative;
+  top: 30%;
+  /* transform: translateY(-50%); */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 6rem;
+  }
+  #title-name,
+  #story-word {
+    font-size: 6rem;
+  }
+}
+@media (max-width: 500px) {
+  .title,
+  #title-name,
+  #story-word {
+    font-size: 4rem;
+  }
+  .subtitle {
+    padding-top: 12.5rem;
+  }
+}
+@keyframes showTitle {
+  0% {
+    opacity: 0;
+
+    left: 1rem;
+  }
+
+  100% {
+    opacity: 1;
+
+    left: 3rem;
+  }
+}
+/* first chapter */
+.flute-chapter {
+  top: -7rem;
+}
+
+.flute-chapter > .chapter-left {
+  background-color: black;
+  background-image: url(../resources/header-img.jpg);
+  background-size: 45%;
+
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.flute-chapter > .title {
+  animation-delay: 20s;
+}
+.chapter-title {
+  color: var(--accent-color);
+  font-family: "Six Caps";
+
+  font-size: 8rem;
+  padding-left: 2rem;
+
+  position: absolute;
+  padding-top: 8rem;
+  display: flex;
+  position: absolute;
+}
+@media (max-width: 1200px) {
+  .flute-chapter > .chapter {
+    background-size: 80%;
+  }
+}
+/* bet paragraph */
+.bet-chapter {
+  top: -22rem;
+  z-index: -1;
+}
+.chapter-right {
+  height: 40rem;
+}
+.bet-chapter > .chapter-right {
+  background-color: #060709;
+  background-image: url(../resources/the-bet111.jpg);
+  background-size: 100%;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.chapter-title.right {
+  right: 7rem;
+  padding-top: 17rem;
+}
+.chapter-right p {
+  padding-top: 5rem;
+}
+.present-chapter {
+  top: -30rem;
+  z-index: -2;
+}
+.present-chapter > .chapter-left {
+  background-color: #242424;
+  background-image: url(../resources/keyboard.jpg);
+  background-size: 40%;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.curriculum-chapter {
+  top: -37rem;
+
+  z-index: -3;
+}
+/* progressbar  */
+/* ////////////////////// */
+.ring-container {
+  /* background: lime; */
+  position: absolute;
+  bottom: 8rem;
+  left: 2rem;
+  display: flex;
+}
+.ring {
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+}
+
+.progress-ring {
+}
+
+.progress-ring__circle {
+  transition: 0.35s stroke-dashoffset;
+
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+input {
+  display: none;
+}
+.circle-lable {
+  color: white;
+  font-weight: 800;
+  bottom: 3.1rem;
+  font-size: 1.2rem;
+  /* background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 5px; */
+}
+.lable-Js {
+  position: absolute;
+
+  left: 1.1rem;
+}
+.lable-html {
+  position: absolute;
+
+  left: 11.1rem;
+}
+.lable-css {
+  position: absolute;
+
+  left: 22rem;
+}
+.lable-react {
+  position: absolute;
+
+  left: 30.3rem;
+}
+.curriculum-chapter > .chapter {
+  height: 50rem;
+  background-color: #2d2a2e;
+  background-image: url(../resources/language-background.jpg);
+  background-repeat: no-repeat;
+  background-size: 45%;
+}
+
+.curriculum-chapter .paragraph {
+  top: 12rem;
+}
+.fa.fa-github {
+  color: var(--accent-color);
+
+  font-size: 5rem;
+  /* background-color: lime; */
+  position: relative;
+  left: 2rem;
+  bottom: -2rem;
+}
+.cv-button-container {
+  position: absolute;
+
+  right: 3rem;
+  bottom: 3rem;
+  width: auto;
+  height: auto;
+}
+.fa-file-pdf {
+  color: var(--accent-color);
+  font-size: 5rem;
+
+  bottom: 3rem;
+  right: 3rem;
+}
+.cv-label {
+  color: white;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0.3rem;
+  left: -1rem;
+}
+.fa.fa-github:hover,
+.fa-file-pdf:hover {
+  filter: brightness(150%);
+}
+/* diplomas */
+.diplomas-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+}
+.box {
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
+  height: 13rem;
+  margin: 2rem;
+}

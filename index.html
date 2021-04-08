@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murgoci George Portofolio</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Six+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onclick="changeAccentColor()">
+    <div class="nav-container">
+      <ul>
+        <li>The Past</li>
+        <li>The Bet</li>
+        <li>The Present</li>
+        <li>The Languages</li>
+        <li>The curriculum</li>
+        <li>The End</li>
+      </ul>
+    </div>
+    <div class="chapter-container">
+      <div class="header">
+        <div class="title">
+          My name is
+          <h1 id="title-name">George Murgoci</h1>
+        </div>
+        <div class="title subtitle">
+          And this is my
+          <h1 id="story-word">story!</h1>
+        </div>
+      </div>
+
+      <!-- flute chapter -->
+      <div class="chapter-container flute-chapter">
+        <div class="chapter-left chapter show" data-chapter="flute">
+          <div class="title chapter-title">The past</div>
+
+          <p data-chapter="flute" class="paragraph fluteParagraph"></p>
+        </div>
+      </div>
+      <!-- bet chapter -->
+      <div class="chapter-container bet-chapter">
+        <div class="chapter-right chapter" data-chapter="bet">
+          <div class="chapter-title right">The bet</div>
+          <p data-chapter="bet" class="paragraph betParagraph">
+            <!-- " Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut
+          sed eveniet dicta mollitia, et voluptate quisquam dignissimos quidem
+          corporis." -->
+          </p>
+        </div>
+      </div>
+      <!-- the it chapter -->
+      <div class="chapter-container present-chapter">
+        <div class="chapter-left chapter" data-chapter="present">
+          <div class="title chapter-title">The present</div>
+
+          <p data-chapter="present" class="paragraph present-Paragraph"></p>
+        </div>
+      </div>
+
+      <!-- the languages chapter -->
+      <div class="chapter-container curriculum-chapter">
+        <div class="chapter-right chapter" data-chapter="curriculum">
+          <div class="chapter-title right">The curriculum</div>
+
+          <p data-chapter="curriculum" class="paragraph present-Paragraph"></p>
+        </div>
+        <!-- cv download btn -->
+        <div class="cv-button-container">
+          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i></a>
+          <label class="cv-label">CV</label>
+        </div>
+        <div class="ring-container">
+          <div class="ring ring1">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="javascript-cirle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-Js">JavaScript</label>
+            <input
+              data-circle="javascript-cirle"
+              value="100"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+          <div class="ring ring2">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="css-circle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-html">HTML</label>
+            <input
+              data-circle="css-circle"
+              value="80"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+          <div class="ring ring3">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="html-circle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-css">Css</label>
+            <input
+              data-circle="html-circle"
+              value="50"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+          <div class="ring ring4">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="react-circle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-react">React</label>
+            <input
+              data-circle="react-circle"
+              value="30"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+        </div>
+        <!-- //////////////////////// -->
+      </div>
+      <!-- diplomas-->
+      <div class="diplomas-container">
+        <div data-type="html" class="box">
+          <img src="../resources/diplomas/html-diploma.jpg" alt="" />
+        </div>
+       
+        <div data-type="html" data-type="css" class="box">
+          <img src="../resources/diplomas/html-css-git-diploma.jpg" alt="" />
+        </div>
+        <div data-type="jquery" class="box">
+          <img src="../resources/diplomas/jQuery-diploma.jpg" alt="" />
+        </div>
+        <div data-type="html"  class="box">
+          <img src="../resources/diplomas/js-diploma.jpg" alt="" />
+        </div>
+        <div data-type="react" class="box">
+          <img src="../resources/diplomas/react-diploma.jpg" alt="" />
+        </div>
+        
+      </di>
+    </div>
+    <a href="https://github.com/mgeorge94" target="_blank">
+      <i class="fa fa-github"></i
+    ></a>
+    <script src="script.js"></script>
+  </body>
+</html>
