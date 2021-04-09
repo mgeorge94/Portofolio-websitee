@@ -53,16 +53,18 @@ const showChapters = () => {
       chapter.classList.add("show");
 
       // autoWriteText(chapter);
-      if (!writtenChapters.includes(chapter.dataset.chapter)) {
-        index = 1;
-      } else {
-        index = 999999999;
-      }
-    } else {
-      chapter.classList.remove("show");
+      //   if (!writtenChapters.includes(chapter.dataset.chapter)) {
+      //     index = 1;
+      //   } else {
+      //     index = 999999999;
+      //   }
+      // } else {
+      //   chapter.classList.remove("show");
+      // }
     }
+
+    // listenForMouseEnter();
   });
-  // listenForMouseEnter();
 };
 
 window.addEventListener("scroll", showChapters);
@@ -131,6 +133,7 @@ const normalBodyEvens = () => {
   bodyEl.style.filter = "grayscale(0%)";
   bodyEl.style.transition = "filter 0.7s ease-in";
   bodyEl.style.pointerEvents = "auto";
+  index = 1;
 };
 
 //turn On Auto write Text
@@ -138,7 +141,7 @@ const normalBodyEvens = () => {
 const listenForMouseEnter = () => {
   const chapters = document.querySelectorAll(".chapter");
   chapters.forEach(function (chapter) {
-    chapter.addEventListener("wheel", () => {
+    chapter.addEventListener("mousemove", () => {
       if (!chapter.classList.contains("done")) {
         autoWriteText(chapter);
       }
@@ -211,3 +214,85 @@ const hideCertificates = () => {
   });
 };
 hideCertificates();
+// projects
+//movement animation
+const carouselCountainer = document.querySelector(
+  ".projects-carousel-container"
+);
+const card = document.querySelector(".project-card");
+const projectContainer = document.querySelector(".project-container");
+
+//moving animation animation
+projectContainer.addEventListener("mousemove", (e) => {
+  let xAxis =
+    (carouselCountainer.getBoundingClientRect().width * 1.2 - e.pageX) / 15;
+  let yAxis =
+    (carouselCountainer.getBoundingClientRect().height * 3.5 - e.pageY) / 15;
+
+  card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+});
+projectContainer.addEventListener("mouseenter", () => {
+  addHoverEffect();
+  clickOnCardImages();
+});
+projectContainer.addEventListener("mouseleave", (e) => {
+  removeHoverEffect();
+});
+const removeHoverEffect = () => {
+  const card = document.querySelector(".project-card");
+  const cardHeaderImage = document.querySelector(".card-header img");
+  const projectTitle = document.querySelector(".info-title");
+  const seeMoreBtn = document.querySelector(".see-more-btn");
+  const projectDescription = document.querySelector(".card-info");
+  const firstPhoto = document.getElementById("first-image");
+  const secondPhoto = document.getElementById("second-image");
+  const thirdPhoto = document.getElementById("third-image");
+  const fourthPhoto = document.getElementById("fourth-image");
+  card.style.transform = "rotateY(0deg) rotateX(0deg)";
+  card.style.transition = "all 0.5s ease";
+  projectTitle.style.transform = "translateZ(0px)";
+  projectDescription.style.transform = "translateZ(0px)";
+  seeMoreBtn.style.transform = "translateZ(0px)";
+  cardHeaderImage.style.transform = "translateZ(0px)";
+  firstPhoto.style.transform = "translateZ(4px) ";
+  secondPhoto.style.transform = "translateZ(3px) ";
+  thirdPhoto.style.transform = "translateZ(2px) ";
+  fourthPhoto.style.transform = "translateZ(1px) ";
+};
+const addHoverEffect = () => {
+  const card = document.querySelector(".project-card");
+  const projectTitle = document.querySelector(".info-title");
+  const seeMoreBtn = document.querySelector(".see-more-btn");
+  const projectDescription = document.querySelector(".card-info");
+  const firstPhoto = document.getElementById("first-image");
+  const secondPhoto = document.getElementById("second-image");
+  const thirdPhoto = document.getElementById("third-image");
+  const fourthPhoto = document.getElementById("fourth-image");
+  // card.style.transition = "all 0.5s ease";
+  // setTimeout(() => {
+  card.style.transition = "none";
+  // }, 1000);
+  projectTitle.style.transform = "translateZ(90px)";
+  projectDescription.style.transform = "translateZ(90px)";
+  seeMoreBtn.style.transform = "translateZ(90px)";
+  firstPhoto.style.transform = "translateZ(100px) ";
+  secondPhoto.style.transform = "translateZ(70px) ";
+  thirdPhoto.style.transform = "translateZ(50px) ";
+  fourthPhoto.style.transform = "translateZ(49px) ";
+};
+const clickOnCardImages = () => {
+  let trigger = true;
+
+  const allCardImages = document.querySelectorAll(".card-header img");
+  allCardImages.forEach((image) => {
+    image.addEventListener("mousemove", () => {
+      if (trigger === true && !image.classList.contains("fixed")) {
+        image.style.transform = "translateZ(1000px)";
+        trigger = false;
+      }
+      setTimeout(() => {
+        trigger = true;
+      }, 300);
+    });
+  });
+};
