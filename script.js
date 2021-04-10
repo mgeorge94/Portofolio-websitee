@@ -148,7 +148,7 @@ const listenForMouseEnter = () => {
     });
   });
 };
-listenForMouseEnter();
+// listenForMouseEnter();
 
 // progressbar
 
@@ -216,28 +216,34 @@ const hideCertificates = () => {
 hideCertificates();
 // projects
 //movement animation
-const carouselCountainer = document.querySelector(
-  ".projects-carousel-container"
-);
-const card = document.querySelector(".project-card");
-const projectContainer = document.querySelector(".project-container");
 
-//moving animation animation
-projectContainer.addEventListener("mousemove", (e) => {
-  let xAxis =
-    (carouselCountainer.getBoundingClientRect().width * 1.2 - e.pageX) / 15;
-  let yAxis =
-    (carouselCountainer.getBoundingClientRect().height * 3.5 - e.pageY) / 15;
+//moving animation
+const animateProjectCard = () => {
+  const carouselCountainer = document.querySelector(
+    ".projects-carousel-container"
+  );
+  const card = document.querySelector(".project-card");
+  const projectsContainer = document.querySelector(
+    ".projects-carousel-container"
+  );
+  projectsContainer.addEventListener("mousemove", (e) => {
+    let xAxis =
+      (carouselCountainer.getBoundingClientRect().width * 0.9 - e.pageX) / 25;
+    let yAxis =
+      (carouselCountainer.getBoundingClientRect().height * 3.5 - e.pageY) / 15;
 
-  card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-});
-projectContainer.addEventListener("mouseenter", () => {
-  addHoverEffect();
-  clickOnCardImages();
-});
-projectContainer.addEventListener("mouseleave", (e) => {
-  removeHoverEffect();
-});
+    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+  });
+  projectsContainer.addEventListener("mouseenter", () => {
+    addHoverEffect();
+    clickOnCardImages();
+  });
+  projectsContainer.addEventListener("mouseleave", (e) => {
+    removeHoverEffect();
+  });
+};
+// animateProjectCard();
+
 const removeHoverEffect = () => {
   const card = document.querySelector(".project-card");
   const cardHeaderImage = document.querySelector(".card-header img");
@@ -268,17 +274,24 @@ const addHoverEffect = () => {
   const secondPhoto = document.getElementById("second-image");
   const thirdPhoto = document.getElementById("third-image");
   const fourthPhoto = document.getElementById("fourth-image");
+
   // card.style.transition = "all 0.5s ease";
   // setTimeout(() => {
   card.style.transition = "none";
   // }, 1000);
-  projectTitle.style.transform = "translateZ(90px)";
+  projectTitle.style.transform = "translateZ(300px)";
   projectDescription.style.transform = "translateZ(90px)";
+
   seeMoreBtn.style.transform = "translateZ(90px)";
-  firstPhoto.style.transform = "translateZ(100px) ";
-  secondPhoto.style.transform = "translateZ(70px) ";
-  thirdPhoto.style.transform = "translateZ(50px) ";
-  fourthPhoto.style.transform = "translateZ(49px) ";
+  firstPhoto.style.transform = "translateZ(200px) ";
+  firstPhoto.style.transform = "rotate(-5deg)";
+  secondPhoto.style.transform = "translateZ(150px) ";
+  secondPhoto.style.transform = "rotate(-10deg)";
+  thirdPhoto.style.transform = "translateZ(100px) ";
+  thirdPhoto.style.transform = "rotate(-15deg)";
+
+  fourthPhoto.style.transform = "translateZ(50px) ";
+  fourthPhoto.style.transform = "rotate(-20deg)";
 };
 const clickOnCardImages = () => {
   let trigger = true;
@@ -296,3 +309,134 @@ const clickOnCardImages = () => {
     });
   });
 };
+//changeProject
+const changeProject = () => {
+  const card = document.querySelector(".project-card");
+  setTimeout(insertNextProjects, 1000);
+
+  card.style.animation = "rotation 2s forwards";
+};
+
+const clickRightBrn = () => {
+  const rightArrowBtn = document.querySelector(".fa-angle-right");
+  rightArrowBtn.addEventListener("click", () => {
+    changeProject();
+  });
+};
+// clickRightBrn();
+
+// other projects arr
+const projectsArr = [
+  {
+    name: "Portofolio Website",
+    paragraphCard:
+      "There is no surprise that my personal portofolio si done by .. well ..me. I included this in my my projects portofolio because I stumbled upon some interesting problems along the way and  the way I managed to fix the is.. at least interesting.",
+    picture1: `./resources/project-photos/Portofolio-project/quote.jpg`,
+    picture2: `./resources/project-photos/Portofolio-project/level.jpg `,
+    picture3: `./resources/project-photos/Portofolio-project/certifications.jpg`,
+    picture4: `./resources/project-photos/Portofolio-project/project.jpg`,
+    seeMoreContainer: [
+      {
+        title: "ceva ca si titlu",
+        paragraph1:
+          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        subtitle: "chalanges",
+        paragraph2:
+          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        subtitle2: "How i Ovecome them",
+        paragraph3:
+          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        bestFeatures: [
+          "fancy smancy design",
+          "storyTelling engine",
+          "cacat cu mac",
+          "altceva",
+          "inca ceva",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Musicare",
+    paragraphCard:
+      "My first ever project. And kind of an ambitious one. Done in 2 mouths and 0  experience to begin with, im managed to make a real life scenario website, all the features you normally see, and some bonus ones",
+    picture1: `./resources/project-photos/Musicare-project/panels.jpg`,
+    picture2: `./resources/project-photos/Musicare-project/landing.jpg `,
+    picture3: `./resources/project-photos/Musicare-project/about.jpg`,
+    picture4: `./resources/project-photos/Musicare-project/grid.jpg`,
+    seeMoreContainer: [
+      {
+        title: "ceva ca si titlu",
+        paragraph1:
+          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        subtitle: "chalanges",
+        paragraph2:
+          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        subtitle2: "How i Ovecome them",
+        paragraph3:
+          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        bestFeatures: [
+          "fancy smancy design",
+          "storyTelling engine",
+          "cacat cu mac",
+          "altceva",
+          "inca ceva",
+        ],
+      },
+    ],
+  },
+];
+let projectIndex = 0;
+const projectNames = [];
+
+const insertNextProjects = () => {
+  const projectsContainer = document.querySelector(
+    ".projects-carousel-container"
+  );
+  const currentProjectName = projectNames[projectIndex];
+
+  projectsArr.forEach((project) => {
+    let name = project.name;
+    let paragraphCard = project.paragraphCard;
+    let picture1 = project.picture1;
+    let picture2 = project.picture2;
+    let picture3 = project.picture3;
+    let picture4 = project.picture4;
+    if (!projectNames.includes(name)) {
+      projectNames.push(name);
+    }
+    const newProjectHTML = ` <div class="project-container">
+             
+    <div class="project-card">
+      <i class="fas fa-angle-left"></i>
+  <i class="fas fa-angle-right"></i>
+      <div class="card-header">
+        <div class="under-image"></div>
+        <img  id ="first-image"src=""${picture1}">
+        <img id ="second-image" src="${picture2}">
+        <img id ="third-image" src="${picture3}">
+        <img  class= "fixed"id ="fourth-image" src="${picture4}">
+      </div>
+      <div class="card-info">
+        <h1 class="info-title"> ${name}</h1>
+        <p>${paragraphCard}</p>
+      </div>
+      <div class="project-details">
+        <button class="see-more-btn">See more</button>
+      </div>
+    </div>
+  </div>`;
+    if (currentProjectName !== name) {
+      projectsContainer.innerHTML = newProjectHTML;
+    }
+    if (projectIndex >= projectsArr.length) {
+      projectIndex = 0;
+    }
+  });
+  animateProjectCard();
+  clickRightBrn();
+
+  console.log(projectNames);
+  projectIndex++;
+};
+insertNextProjects();
