@@ -333,6 +333,7 @@ const clickRightBrn = () => {
   const rightArrowBtn = projectsContainer.querySelector(".fa-angle-right");
   rightArrowBtn.addEventListener("click", () => {
     changeProject(projectsArr);
+    // showProjectDetails();
   });
 };
 const clickLeftBtn = () => {
@@ -340,6 +341,7 @@ const clickLeftBtn = () => {
   const rightArrowBtn = projectsContainer.querySelector(".fa-angle-left");
   rightArrowBtn.addEventListener("click", () => {
     changeProject(reverseProjectsArr);
+    // showProjectDetails();
   });
 };
 
@@ -368,11 +370,11 @@ const projectsArr = [
           " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
 
         bestFeatures: [
-          "Modern but elegant design",
-          "Dinamic accent color for the different sites that you choose",
-          "Split landing page",
-          "Working instrument filter",
-          "Secret quizz game for discounts",
+          "=Modern but elegant design",
+          "==Dinamic accent color for the different sites that you choose",
+          "===Split landing page",
+          "====Working instrument filter",
+          "=====Secret quizz game for discounts",
         ],
       },
     ],
@@ -399,11 +401,12 @@ const projectsArr = [
         subtitleParagraph2:
           " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
         bestFeatures: [
-          "--Modern but elegant design",
-          "--Dinamic accent color for the different sites that you choose",
-          "--Split landing page",
-          "--Working instrument filter",
-          "--Secret quizz game for discounts",
+          "Most interesting features",
+          "Modern but elegant design",
+          "Dinamic accent color for the different sites that you choose",
+          "Split landing page",
+          "Working instrument filter",
+          "Secret quizz game for discounts",
         ],
         moreProjectImages: {
           pic1: `./resources/project-photos/musicare-project-image-slider.jpg`,
@@ -418,30 +421,11 @@ const projectsArr = [
 const reverseProjectsArr = projectsArr.reverse();
 let projectIndex = 0;
 const projectNames = [];
+let projectFeaturesArr;
+let projectDetailsPhotosArr;
 
 // //////////////////
-//insert feattureList
-
-const insertListElements = (element, projectFeatureList, counter) => {
-  const bestProjectFeatures = [...element.bestFeatures];
-  const featureArr = [];
-  bestProjectFeatures.forEach((feature) => {
-    if (feature !== undefined) {
-      if (counter < bestProjectFeatures.length) {
-        featureArr.push(feature);
-      } else return;
-    }
-    featureArr.forEach((feature) => {
-      const listEl = document.createElement("li");
-
-      listEl.innerText = feature;
-      projectFeatureList.insertAdjacentElement("beforeend", listEl);
-      counter++;
-      console.log(projectFeatureList);
-    });
-  });
-};
-const insertProjectDetails = (project, counter) => {
+const insertProjectDetails = (project) => {
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
   );
@@ -449,7 +433,6 @@ const insertProjectDetails = (project, counter) => {
     ".project-details-picture-grid"
   );
   const projectFeatureList = document.querySelector(".best-features");
-
   project.seeMoreContainer.forEach((element) => {
     //variables of project description object
     let title = element.title;
@@ -459,7 +442,8 @@ const insertProjectDetails = (project, counter) => {
     let subtitleParagraph2 = element.subtitleParagraph;
     let subtitle1 = element.subtitle1;
     let subtitle2 = element.subtitle2;
-    insertListElements(element, projectFeatureList, counter);
+    projectFeaturesArr = [...element.bestFeatures];
+    // projectDetailsPhotosArr = [...element.moreProjectImages];
     //insertHtml
     const projectDetailsHTML = `
       <h1 class="project-title">${title}</h1>
@@ -467,26 +451,7 @@ const insertProjectDetails = (project, counter) => {
         ${projectDescription}
       </p>
       <div class="project-details-pictures-gird">
-        <img
-          class="project-details-picture"
-          src="./resources/project-photos/musicare-project-image-slider.jpg"
-          alt=""
-        />
-        <img
-          class="project-details-picture"
-          src="./resources/project-photos/musicare-project-grid-photo.jpg"
-          alt=""
-        />
-        <img
-          class="project-details-picture"
-          src="./resources/project-photos/musicare-project-hero-photo.jpg"
-          alt=""
-        />
-        <img
-          class="project-details-picture"
-          src="./resources/project-photos/checkout-form.jpg"
-          alt=""
-        />
+        
       </div>
       <div class="description paragraph1">
         ${paragraph1}
@@ -501,18 +466,55 @@ const insertProjectDetails = (project, counter) => {
       </p>
       <h5 class="project-subtitle features">Most interesting features</h5>
       <ul class="best-features">
-        <li>Modern but elegant design</li>
-        <li>Dinamic accent color for the different sites that you choose</li>
-        <li>Split landing page</li>
-        <li>Working instrument filter</li>
-        <li>Secret quizz game for discounts</li>
+       
       </ul>
     `;
   });
+  projectFeatureList.innerHTML = "";
+  for (var i = 0; i < projectFeaturesArr.length; i++) {
+    const listItem = `<li>${projectFeaturesArr[i]}</li>`;
+    projectFeatureList.insertAdjacentHTML("beforeend", listItem);
+  }
+  console.log(projectFeatureList);
+  // });
+  // console.log(projectFeaturesArr);
+  // projectDetailsPhotosArr.forEach((photo) => {
+  //   let photo1 = photo.pic1;
+  //   let photo2 = photo.pic2;
+  //   let photo3 = photo.pic3;
+  //   let photo4 = photo.pic4;
+  //   let photo5 = photo.pic5;
+  //   let photo6 = photo.pic6;
+  //   let photo7 = photo.pic7;
+  //   let photo8 = photo.pic8;
+  //   let photo9 = photo.pic9;
+  //   if ()
+  //   projectDetailsPictureContainer.innerHTML = `
+  //   <img
+  //         class="project-details-picture"
+  //         src="./resources/project-photos/musicare-project-image-slider.jpg"
+  //         alt=""
+  //       />
+  //       <img
+  //         class="project-details-picture"
+  //         src="./resources/project-photos/musicare-project-grid-photo.jpg"
+  //         alt=""
+  //       />
+  //       <img
+  //         class="project-details-picture"
+  //         src="./resources/project-photos/musicare-project-hero-photo.jpg"
+  //         alt=""
+  //       />
+  //       <img
+  //         class="project-details-picture"
+  //         src="./resources/project-photos/checkout-form.jpg"
+  //         alt=""
+  //       />
+  //   `
+  // })
 };
 ///////////////
 const insertNextProjects = (arr) => {
-  let counter = 0;
   const projectsContainer = document.querySelector(
     ".projects-carousel-container"
   );
@@ -551,7 +553,7 @@ const insertNextProjects = (arr) => {
   </div>`;
     if (currentProjectName !== name) {
       projectsContainer.innerHTML = newProjectHTML;
-      insertProjectDetails(project, counter);
+      insertProjectDetails(project);
     }
     if (projectIndex >= arr.length) {
       projectIndex = 0;
@@ -560,12 +562,12 @@ const insertNextProjects = (arr) => {
   animateProjectCard();
   clickRightBrn();
   clickLeftBtn();
-
   projectIndex++;
 };
-insertNextProjects(projectsArr);
 // details abot projects
-(function showProjectDetails() {
+function showProjectDetails() {
+  console.log("gdhkjhlbjndksnbljnlPROJECTdEAILs");
+  insertNextProjects(projectsArr);
   const seeMoreBtn = document.querySelector(".see-more-btn");
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
@@ -581,13 +583,13 @@ insertNextProjects(projectsArr);
     linksContainer.style.display = "none";
     // experienceChapterContainer.style.display = "none";
   });
-})();
-
+}
+showProjectDetails();
 (function hideProjectDetails() {
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
   );
-  const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left");
+  const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left ");
 
   closeBtn.addEventListener("click", () => {
     projectDetailsContainer.style.transform = "translateX(-400%)";
