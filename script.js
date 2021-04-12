@@ -345,7 +345,7 @@ const clickLeftBtn = () => {
   });
 };
 
-// other projects arr
+// array of projects
 const projectsArr = [
   {
     name: "Portofolio Website",
@@ -362,7 +362,7 @@ const projectsArr = [
           "ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsaipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa",
         paragraph1:
           " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
-        subtitle: "Chalanges",
+        subtitle1: "Chalanges",
         subtitleParagraph:
           " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
         subtitle2: "How i Overcome them",
@@ -394,7 +394,7 @@ const projectsArr = [
           "ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsaipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa",
         paragraph1:
           " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
-        subtitle: "chalanges",
+        subtitle1: "chalanges",
         subtitleParagraph:
           " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
         subtitle2: "How i Ovecome them",
@@ -424,7 +424,59 @@ const projectNames = [];
 let projectFeaturesArr;
 let projectDetailsPhotosArr;
 
-// //////////////////
+//function that recreates best project features each time is called
+// const insertProjectDetails = (project) => {
+//   const projectDetailsContainer = document.querySelector(
+//     ".project-details-container"
+//   );
+//   const projectDetailsPictureContainer = document.querySelector(
+//     ".project-details-picture-grid"
+//   );
+//   const projectFeatureList = document.querySelector(".best-features");
+//   project.seeMoreContainer.forEach((element) => {
+//     //variables of project description object
+//     let title = element.title;
+//     let projectDescription = element.projectDescriptionParagraph;
+//     let paragraph1 = element.paragraph1;
+//     let subtitleParagraph = element.subtitleParagraph;
+//     let subtitleParagraph2 = element.subtitleParagraph;
+//     let subtitle1 = element.subtitle1;
+//     let subtitle2 = element.subtitle2;
+//     projectFeaturesArr = [...element.bestFeatures];
+
+//     //insertHtml
+//     const projectDetailsHTML = `
+//       <h1 class="project-title">${title}</h1>
+//       <p class="description project-description">
+//         ${projectDescription}
+//       </p>
+//       <div class="project-details-pictures-gird">
+
+//       </div>
+//       <div class="description paragraph1">
+//         ${paragraph1}
+//       </div>
+//       <h5 class="project-subtitle chalanges">${subtitle1}</h5>
+//       <p class="description paragraph2">
+//         ${subtitleParagraph}
+//       </p>
+//       <h5 class="project-subtitle overcome">${subtitle2}</h5>
+//       <p class="description paragraph3">
+//         ${subtitleParagraph2}
+//       </p>
+//       <h5 class="project-subtitle features">Most interesting features</h5>
+//       <ul class="best-features">
+
+//       </ul>
+//     `;
+//   });
+//   projectFeatureList.innerHTML = "";
+//   for (var i = 0; i < projectFeaturesArr.length; i++) {
+//     const listItem = `<li>${projectFeaturesArr[i]}</li>`;
+//     projectFeatureList.insertAdjacentHTML("beforeend", listItem);
+//   }
+//   console.log(projectFeatureList);
+// };
 const insertProjectDetails = (project) => {
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
@@ -432,7 +484,8 @@ const insertProjectDetails = (project) => {
   const projectDetailsPictureContainer = document.querySelector(
     ".project-details-picture-grid"
   );
-  const projectFeatureList = document.querySelector(".best-features");
+  // const projectFeatureList = document.querySelector(".best-features");
+
   project.seeMoreContainer.forEach((element) => {
     //variables of project description object
     let title = element.title;
@@ -443,77 +496,50 @@ const insertProjectDetails = (project) => {
     let subtitle1 = element.subtitle1;
     let subtitle2 = element.subtitle2;
     projectFeaturesArr = [...element.bestFeatures];
-    // projectDetailsPhotosArr = [...element.moreProjectImages];
+
+    // best features
+    const projectFeatureList = document.createElement("ul");
+    projectFeatureList.classList.add("best-features");
+    projectFeatureList.innerHTML = "";
+    for (var i = 0; i < projectFeaturesArr.length; i++) {
+      const listItem = `<li>${projectFeaturesArr[i]}</li>`;
+      projectFeatureList.insertAdjacentHTML("beforeend", listItem);
+    }
+
     //insertHtml
     const projectDetailsHTML = `
-      <h1 class="project-title">${title}</h1>
-      <p class="description project-description">
-        ${projectDescription}
-      </p>
-      <div class="project-details-pictures-gird">
-        
-      </div>
-      <div class="description paragraph1">
-        ${paragraph1}
-      </div>
-      <h5 class="project-subtitle chalanges">${subtitle1}</h5>
-      <p class="description paragraph2">
-        ${subtitleParagraph}
-      </p>
-      <h5 class="project-subtitle overcome">${subtitle2}</h5>
-      <p class="description paragraph3">
-        ${subtitleParagraph2}
-      </p>
-      <h5 class="project-subtitle features">Most interesting features</h5>
-      <ul class="best-features">
-       
-      </ul>
-    `;
+    <i class="fas fa-angle-left"></i>
+        <h1 class="project-title">${title}</h1>
+        <p class="description project-description">
+          ${projectDescription}
+        </p>
+        <div class="project-details-pictures-gird">
+          
+        </div>
+        <div class="description paragraph1">
+          ${paragraph1}
+        </div>
+        <h5 class="project-subtitle chalanges">${subtitle1}</h5>
+        <p class="description paragraph2">
+          ${subtitleParagraph}
+        </p>
+        <h5 class="project-subtitle overcome">${subtitle2}</h5>
+        <p class="description paragraph3">
+          ${subtitleParagraph2}
+        </p>
+        <h5 class="project-subtitle features">Most interesting features</h5>
+     
+      `;
+    projectDetailsContainer.innerHTML = projectDetailsHTML;
+    projectDetailsContainer.appendChild(projectFeatureList);
+
+    const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left ");
+    hideProjectDetails(closeBtn);
   });
-  projectFeatureList.innerHTML = "";
-  for (var i = 0; i < projectFeaturesArr.length; i++) {
-    const listItem = `<li>${projectFeaturesArr[i]}</li>`;
-    projectFeatureList.insertAdjacentHTML("beforeend", listItem);
-  }
-  console.log(projectFeatureList);
-  // });
-  // console.log(projectFeaturesArr);
-  // projectDetailsPhotosArr.forEach((photo) => {
-  //   let photo1 = photo.pic1;
-  //   let photo2 = photo.pic2;
-  //   let photo3 = photo.pic3;
-  //   let photo4 = photo.pic4;
-  //   let photo5 = photo.pic5;
-  //   let photo6 = photo.pic6;
-  //   let photo7 = photo.pic7;
-  //   let photo8 = photo.pic8;
-  //   let photo9 = photo.pic9;
-  //   if ()
-  //   projectDetailsPictureContainer.innerHTML = `
-  //   <img
-  //         class="project-details-picture"
-  //         src="./resources/project-photos/musicare-project-image-slider.jpg"
-  //         alt=""
-  //       />
-  //       <img
-  //         class="project-details-picture"
-  //         src="./resources/project-photos/musicare-project-grid-photo.jpg"
-  //         alt=""
-  //       />
-  //       <img
-  //         class="project-details-picture"
-  //         src="./resources/project-photos/musicare-project-hero-photo.jpg"
-  //         alt=""
-  //       />
-  //       <img
-  //         class="project-details-picture"
-  //         src="./resources/project-photos/checkout-form.jpg"
-  //         alt=""
-  //       />
-  //   `
-  // })
 };
+
 ///////////////
+// function that recreates project  html every time is called
 const insertNextProjects = (arr) => {
   const projectsContainer = document.querySelector(
     ".projects-carousel-container"
@@ -530,7 +556,9 @@ const insertNextProjects = (arr) => {
     if (!projectNames.includes(name)) {
       projectNames.push(name);
     }
-    const newProjectHTML = ` <div class="project-container">
+    const newProjectHTML = ` '
+    
+    <div class="project-container">
              
     <div class="project-card">
       <i class="fas fa-angle-left"></i>
@@ -547,7 +575,7 @@ const insertNextProjects = (arr) => {
         <p>${paragraphCard}</p>
       </div>
       <div class="project-details">
-        <button class="see-more-btn">See more</button>
+      <button class="see-more-btn">See more</button>
       </div>
     </div>
   </div>`;
@@ -559,20 +587,25 @@ const insertNextProjects = (arr) => {
       projectIndex = 0;
     }
   });
+  let seeMoreBtn = document.querySelector(".see-more-btn");
   animateProjectCard();
   clickRightBrn();
   clickLeftBtn();
+  showProjectDetails(seeMoreBtn);
+
   projectIndex++;
+  return seeMoreBtn;
 };
+insertNextProjects(projectsArr);
+
 // details abot projects
-function showProjectDetails() {
-  console.log("gdhkjhlbjndksnbljnlPROJECTdEAILs");
-  insertNextProjects(projectsArr);
-  const seeMoreBtn = document.querySelector(".see-more-btn");
-  const projectDetailsContainer = document.querySelector(
+function showProjectDetails(seeMoreBtn) {
+  // let seeMoreBtn = insertNextProjects(projectsArr);
+
+  let projectDetailsContainer = document.querySelector(
     ".project-details-container"
   );
-  const experienceChapterContainer = document.querySelector(
+  let experienceChapterContainer = document.querySelector(
     ".experience-chapter"
   );
   const linksContainer = document.querySelector(".links-container");
@@ -581,17 +614,15 @@ function showProjectDetails() {
     projectDetailsContainer.style.transform = "translateX(0px)";
     pageScroll(2000);
     linksContainer.style.display = "none";
-    // experienceChapterContainer.style.display = "none";
   });
 }
-showProjectDetails();
-(function hideProjectDetails() {
+// showProjectDetails();
+
+function hideProjectDetails(closeBtn) {
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
   );
-  const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left ");
-
   closeBtn.addEventListener("click", () => {
     projectDetailsContainer.style.transform = "translateX(-400%)";
   });
-})();
+}
