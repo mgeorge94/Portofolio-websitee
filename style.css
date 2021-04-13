@@ -13,7 +13,8 @@ body {
 /* nav  bar*/
 .nav-container {
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  background: lime;
   position: fixed;
   z-index: 3;
   padding: 1rem 3rem;

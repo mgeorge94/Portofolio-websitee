@@ -58,16 +58,40 @@ const showChapters = () => {
       //   } else {
       //     index = 999999999;
       //   }
-      // } else {
-      //   chapter.classList.remove("show");
-      // }
+    } else {
+      chapter.classList.remove("show");
     }
-
+    //  disabled for testing puprposes
     // listenForMouseEnter();
   });
 };
 
 window.addEventListener("scroll", showChapters);
+//all chapters
+const fluteChapter = document.querySelector(".flute-chapter");
+const betChapter = document.querySelector(".bet-chapter");
+const presentChapter = document.querySelector(".present-chapter");
+const curriculumChapter = document.querySelector(".curriculum-chapter");
+const experienceChapter = document.querySelector(".experience-chapter");
+const endChapter = document.querySelector(".end-chapter");
+const fluteChapterTitle = fluteChapter.querySelector(".chapter-title");
+const betChapterTitle = betChapter.querySelector(".chapter-title");
+const presentChapterTitle = presentChapter.querySelector(".chapter-title");
+const curriculumChapterTitle = curriculumChapter.querySelector(
+  ".chapter-title"
+);
+const experienceChapterTitle = experienceChapter.querySelector(
+  ".chapter-title"
+);
+// const endChapterTitle = endChapter.querySelector(".chapter-title");
+
+// nav bar buttons functionality
+const skipToChapter = (chapter) => {
+  const trigger = chapter.getBoundingClientRect().top;
+  pageScroll(trigger);
+  index = 9999;
+  console.log(chapter, trigger);
+};
 // chapters paragraphs array
 const paragraphsArr = [
   {
@@ -109,7 +133,7 @@ const autoWriteText = (chapter) => {
       paragraphHTML.innerText = paragraph.paragraph.slice(0, index);
       index++;
       if (index > paragraph.paragraph.length) {
-        normalBodyEvens();
+        normalBodyEvents();
         return;
       }
 
@@ -127,7 +151,7 @@ const blockBodyEvents = () => {
   bodyEl.style.transition = "filter 0.7s ease-in";
   bodyEl.style.pointerEvents = "none";
 };
-const normalBodyEvens = () => {
+const normalBodyEvents = () => {
   const bodyEl = document.getElementsByTagName("BODY")[0];
   bodyEl.style.overflowY = "auto";
   bodyEl.style.filter = "grayscale(0%)";
@@ -148,6 +172,7 @@ const listenForMouseEnter = () => {
     });
   });
 };
+//disabld or testing purposes
 // listenForMouseEnter();
 
 // progressbar
@@ -193,7 +218,6 @@ pageScroll(0);
         event.stopPropagation();
         removeCertificateActiveClass();
         box.classList.add("active");
-        // pageScroll(1800);
       });
     });
     pageScroll(1300);
@@ -357,7 +381,7 @@ const projectsArr = [
     picture4: `./resources/project-photos/Portofolio-project/project.jpg`,
     seeMoreContainer: [
       {
-        title: "Musicare",
+        title: "Personal Portofolio",
         projectDescriptionParagraph:
           "ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsaipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa",
         paragraph1:
@@ -376,6 +400,12 @@ const projectsArr = [
           "====Working instrument filter",
           "=====Secret quizz game for discounts",
         ],
+        moreProjectImages: [
+          `./resources/project-photos/musicare-project-image-slider.jpg`,
+          `./resources/project-photos/musicare-project-grid-photo.jpg`,
+          `./resources/project-photos/musicare-project-hero-photo.jpg`,
+          `./resources/project-photos/checkout-form.jpg`,
+        ],
       },
     ],
   },
@@ -389,7 +419,7 @@ const projectsArr = [
     picture4: `./resources/project-photos/Musicare-project/grid.jpg`,
     seeMoreContainer: [
       {
-        title: "ceva ca si titlu",
+        title: "Musicare",
         projectDescriptionParagraph:
           "ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsaipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa",
         paragraph1:
@@ -408,12 +438,12 @@ const projectsArr = [
           "Working instrument filter",
           "Secret quizz game for discounts",
         ],
-        moreProjectImages: {
-          pic1: `./resources/project-photos/musicare-project-image-slider.jpg`,
-          pic2: `./resources/project-photos/musicare-project-grid-photo.jpg`,
-          pic3: `./resources/project-photos/musicare-project-hero-photo.jpg`,
-          pic4: `./resources/project-photos/checkout-form.jpg`,
-        },
+        moreProjectImages: [
+          "./resources/project-photos/musicare-project-image-slider.jpg",
+          "./resources/project-photos/musicare-project-grid-photo.jpg",
+          "./resources/project-photos/musicare-project-hero-photo.jpg",
+          "./resources/project-photos/checkout-form.jpg",
+        ],
       },
     ],
   },
@@ -422,61 +452,32 @@ const reverseProjectsArr = projectsArr.reverse();
 let projectIndex = 0;
 const projectNames = [];
 let projectFeaturesArr;
-let projectDetailsPhotosArr;
+let moreProjectImages;
 
-//function that recreates best project features each time is called
-// const insertProjectDetails = (project) => {
-//   const projectDetailsContainer = document.querySelector(
-//     ".project-details-container"
-//   );
-//   const projectDetailsPictureContainer = document.querySelector(
-//     ".project-details-picture-grid"
-//   );
-//   const projectFeatureList = document.querySelector(".best-features");
-//   project.seeMoreContainer.forEach((element) => {
-//     //variables of project description object
-//     let title = element.title;
-//     let projectDescription = element.projectDescriptionParagraph;
-//     let paragraph1 = element.paragraph1;
-//     let subtitleParagraph = element.subtitleParagraph;
-//     let subtitleParagraph2 = element.subtitleParagraph;
-//     let subtitle1 = element.subtitle1;
-//     let subtitle2 = element.subtitle2;
-//     projectFeaturesArr = [...element.bestFeatures];
+//functions that recreates best project features each time is called
+// best features
+const insertBestProjectFeatures = () => {
+  const projectFeatureList = document.createElement("ul");
+  projectFeatureList.classList.add("best-features");
+  projectFeatureList.innerHTML = "";
+  for (let i = 0; i < projectFeaturesArr.length; i++) {
+    const listItem = `<li>${projectFeaturesArr[i]}</li>`;
+    projectFeatureList.insertAdjacentHTML("beforeend", listItem);
+  }
+  return projectFeatureList;
+};
+const insertMoreProjectImages = (imageElGrid) => {
+  imageElGrid.innerHTML = "";
+  for (let i = 0; i < moreProjectImages.length; i++) {
+    const image = `<img
+    class="project-details-picture"
+    src='${moreProjectImages[i]}' alt=""
+  />`;
 
-//     //insertHtml
-//     const projectDetailsHTML = `
-//       <h1 class="project-title">${title}</h1>
-//       <p class="description project-description">
-//         ${projectDescription}
-//       </p>
-//       <div class="project-details-pictures-gird">
-
-//       </div>
-//       <div class="description paragraph1">
-//         ${paragraph1}
-//       </div>
-//       <h5 class="project-subtitle chalanges">${subtitle1}</h5>
-//       <p class="description paragraph2">
-//         ${subtitleParagraph}
-//       </p>
-//       <h5 class="project-subtitle overcome">${subtitle2}</h5>
-//       <p class="description paragraph3">
-//         ${subtitleParagraph2}
-//       </p>
-//       <h5 class="project-subtitle features">Most interesting features</h5>
-//       <ul class="best-features">
-
-//       </ul>
-//     `;
-//   });
-//   projectFeatureList.innerHTML = "";
-//   for (var i = 0; i < projectFeaturesArr.length; i++) {
-//     const listItem = `<li>${projectFeaturesArr[i]}</li>`;
-//     projectFeatureList.insertAdjacentHTML("beforeend", listItem);
-//   }
-//   console.log(projectFeatureList);
-// };
+    imageElGrid.insertAdjacentHTML("beforeend", image);
+  }
+  return imageElGrid;
+};
 const insertProjectDetails = (project) => {
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
@@ -484,7 +485,6 @@ const insertProjectDetails = (project) => {
   const projectDetailsPictureContainer = document.querySelector(
     ".project-details-picture-grid"
   );
-  // const projectFeatureList = document.querySelector(".best-features");
 
   project.seeMoreContainer.forEach((element) => {
     //variables of project description object
@@ -495,16 +495,9 @@ const insertProjectDetails = (project) => {
     let subtitleParagraph2 = element.subtitleParagraph;
     let subtitle1 = element.subtitle1;
     let subtitle2 = element.subtitle2;
+    let projectImages;
     projectFeaturesArr = [...element.bestFeatures];
-
-    // best features
-    const projectFeatureList = document.createElement("ul");
-    projectFeatureList.classList.add("best-features");
-    projectFeatureList.innerHTML = "";
-    for (var i = 0; i < projectFeaturesArr.length; i++) {
-      const listItem = `<li>${projectFeaturesArr[i]}</li>`;
-      projectFeatureList.insertAdjacentHTML("beforeend", listItem);
-    }
+    moreProjectImages = [...element.moreProjectImages];
 
     //insertHtml
     const projectDetailsHTML = `
@@ -514,7 +507,7 @@ const insertProjectDetails = (project) => {
           ${projectDescription}
         </p>
         <div class="project-details-pictures-gird">
-          
+          ${projectImages}
         </div>
         <div class="description paragraph1">
           ${paragraph1}
@@ -531,8 +524,12 @@ const insertProjectDetails = (project) => {
      
       `;
     projectDetailsContainer.innerHTML = projectDetailsHTML;
-    projectDetailsContainer.appendChild(projectFeatureList);
 
+    const imagesGrid = document.querySelector(".project-details-pictures-gird");
+    const projectFeatureList = insertBestProjectFeatures();
+    projectImages = insertMoreProjectImages(imagesGrid);
+    projectDetailsContainer.appendChild(projectFeatureList);
+    // projectDetailsContainer.appendChild(projectImages);
     const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left ");
     hideProjectDetails(closeBtn);
   });
