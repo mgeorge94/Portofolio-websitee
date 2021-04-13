@@ -28,14 +28,19 @@
   </head>
   <body onclick="changeAccentColor()">
     <div class="nav-container">
-      <ul>
-        <li onClick="skipToChapter(368)">The Past</li>
-        <li onClick="skipToChapter(608)">The Bet</li>
-        <li onClick="skipToChapter(1120)">The Present</li>
-        <li onClick="skipToChapter(1504)">The Curriculum</li>
-        <li onClick="skipToChapter(2144)">The Experience</li>
-        <li onClick="skipToChapter(endChapter)">The End</li>
-      </ul>
+      <div class="brand-title">MurgociGeorge.()</div>
+      <i class="fas fa-bars"></i>
+      <div class="navbar-links">
+        <ul>
+          <li onClick="skipToChapter(368)">The Past</li>
+          <li onClick="skipToChapter(608)">The Bet</li>
+          <li onClick="skipToChapter(1120)">The Present</li>
+          <li onClick="skipToChapter(1504)">The Curriculum</li>
+          <li onClick="skipToChapter(2144)">The Experience</li>
+          <li onClick="skipToChapter(3055)">The End</li>
+        </ul>
+      </div>
+      
     </div>
     <div class="chapter-container">
       <div class="header">
@@ -226,7 +231,7 @@
     </div>
 
     <div class="chapter-container experience-chapter">
-      <div class="chapter-left chapter" data-chapter="curriculum">
+      <div class="chapter-left chapter" data-chapter="experience">
         <div class="chapter-title left">The Experience</div>
 
         <div class="projects-carousel-container">
@@ -319,11 +324,12 @@
       </ul>
     </div>
     <div class="chapter-container end-chapter">
-      <div class="chapter-right chapter" data-chapter="bet">
+      <div class="chapter-right chapter" data-chapter="end">
         <div class="chapter-title right">The end</div>
         <div class="form-container">
           <form action="action_page.php">
         <h4>Wanna work together?</h4>
+        
             <label for="fname">Tell me  your name</label>
             <input type="text" id="fname" name="name" placeholder="Ex: Bill Smith">
             <label for="fname">Gimme your email</label>
@@ -339,6 +345,7 @@
         
           </form>
         </div>
+        <p data-chapter="end" class="paragraph endParagraph"></p>
 
     </div>
 

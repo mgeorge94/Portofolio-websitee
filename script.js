@@ -5,7 +5,20 @@ const pageScroll = (value) => {
     behavior: "smooth",
   });
 };
-
+//make nav bar change at smallscreen sizes
+(showNavLinks = () => {
+  const navBtn = document.querySelector(".fa-bars");
+  const navLinks = document.querySelector(".navbar-links");
+  const navContainer = document.querySelector(".nav-container");
+  navBtn.addEventListener("click", () => {
+    if (!navLinks.classList.contains("active")) {
+      navLinks.classList.add("active");
+      // navContainer.style.height = "18rem";
+    } else {
+      navLinks.classList.remove("active");
+    }
+  });
+})();
 //function that randomly changes accent color on click
 (changeAccentColor = () => {
   //array of accent colors
@@ -62,7 +75,7 @@ const showChapters = () => {
       chapter.classList.remove("show");
     }
     //  disabled for testing puprposes
-    listenForMouseEnter();
+    // listenForMouseEnter();
   });
 };
 
@@ -115,8 +128,9 @@ const paragraphsArr = [
   },
   {
     name: "end",
-    paragraph: ` "I used to be a flute player. Even thow I wasn't makin' much and I worked from dawn to dusk, I was glad to be working.
-        One day I was on my break and I was just hanging out when I heard a bet I couldn't refuse..."`,
+    paragraph: ` "if (wannaGetThingsDoneRight===true){
+      formBtn.addEventListener("click",call(murgociGeorge))
+    }else return;"`,
   },
 ];
 
@@ -173,7 +187,7 @@ const listenForMouseEnter = () => {
   });
 };
 //disabld or testing purposes
-listenForMouseEnter();
+// listenForMouseEnter();
 
 // progressbar
 
@@ -383,22 +397,22 @@ const projectsArr = [
       {
         title: "Personal Portofolio",
         projectDescriptionParagraph:
-          "ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsaipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa",
+          "When I started working on this website I had no idea what I wanted to do. Or rather, I had to many ideas and didn't know which one to choose. After a brainstorming session a arrived at the conclusion that this website should reflect my personality and the visual effects, text, little jokes, even the Mafia:The city of lost heaven reference (Kudos to you  if you got it ), all reflect my personality.",
         paragraph1:
-          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+          " The pictures above reflect what I think are the best aesthetic choices I made on this website  but not the hardest things to do.In other words, those are the thing I flex with to my mom.",
         subtitle1: "Chalanges",
         subtitleParagraph:
-          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+          "Oh... the auto-typing effect. I wanted to implement this in a project for a while but it was like it wasn't making sense form a logical perspective. But here, i embraced the storytelling  way of presenting my message and i think the auto-typing effect   fits right in.",
         subtitle2: "How i Overcome them",
         subtitleParagraph2:
-          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+          "After trying to set up a trigger point  for the function that types the text to run, and failing  miserably, I started thinking about mouse event listeners for each card. At the time of writing this, I probably switched between mousemoove, mouseenter and mouseover more than 10 times... Probably in a few years I will laugh at the problems i encountered now but for 4 months of experience, i think is preatty good.  ",
 
         bestFeatures: [
-          "=Modern but elegant design",
-          "==Dinamic accent color for the different sites that you choose",
-          "===Split landing page",
-          "====Working instrument filter",
-          "=====Secret quizz game for discounts",
+          "Modern design that fully translates  my personality ",
+          "Accent color that dynamically changes on every click ",
+          "Beautiful 3d animation  on hover for the project cards in  the experience chapter",
+          "auto typing effect with screen freeze and  black and white transition for added  nostalgia effect and emphasising the storytelling mood ",
+          "The amazing parallax effect that even now, then i know how its done, makes me go 'wow'",
         ],
         moreProjectImages: [
           `./resources/project-photos/musicare-project-image-slider.jpg`,
@@ -421,22 +435,36 @@ const projectsArr = [
       {
         title: "Musicare",
         projectDescriptionParagraph:
-          "ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsaipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa",
+          "I started this project in order to make the transition,  from being a full time flute player to a ambitious programmer, smoother. And also I thought it was an unique,  long-awaited and needed idea-implementation  for my country. You can check it out <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a>. ",
         paragraph1:
-          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+          "  Ok. In the pictures above you can see some of the highlights from the website , but not all of them. As i said, this project is a fully functional website with lots of features that i will brag about down bellow",
         subtitle1: "chalanges",
-        subtitleParagraph:
-          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
-        subtitle2: "How i Ovecome them",
-        subtitleParagraph2:
-          " ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi ipsum, magnam natus qui officia unde est possimus modi vel nobis voluptatum ab quis eius excepturi rerum exercitationem. Eos, ipsa?",
+        subtitleParagraph: `The thing is .. On such a big project there  are bound to be things that  drive you crazy each commit. And please keep in mind that, at the time i had like 0h of  real experience . So, with that in mind, here is a list with things that MADE ME A BETTER PROGRAMMER in an attempt to fixing them:  
+        <ul>
+        <li>- the split landing page</li>
+        <li>- the slides you see above</li>
+        <li>- the  secret quiz for discounts</li>
+        <li>- the freakin' filter for instruments</li>
+        <li>- the contact/checkout forms because i didn't know any backend back then</li>
+        <li>- making things as dry as possible</li>
+        </ul>`,
+
+        subtitle2: "How i fixed stuff",
+        subtitleParagraph2: ` First I want to say that,  after 4 months, when i finally finished the project, i fell in love with the programing way of thinking about problems.
+          <h6>About fixes, the biggest problem was the filter for instruments because it's so complex. And after figuring out how to filter the instruments, I lost all the functionality when a instrument card was clicked. So I ended up repainting the whole instruments grid and calling the functions i needed for functionality inside the repaint function.</h6>
+          <h6>The quiz was also pretty difficult to implement but  the way i structured my code  with all the questions and answers is pretty API-like. So, now i can flex about being able to filter thing from an API.</h6>
+          <h6>The split landing page that implies that there is a different version of that website under each page, was preatty simple to do. I made two functions that painted on the screen only the things i needed for that specific website and called them through HTML.
+          About the dry part.. there is always more work .
+          </h6>
+           `,
         bestFeatures: [
-          "Most interesting features",
           "Modern but elegant design",
-          "Dinamic accent color for the different sites that you choose",
           "Split landing page",
-          "Working instrument filter",
-          "Secret quizz game for discounts",
+          "Dynamic accent color for the different versions of teh website",
+          "Complex instrument filter that filters alphabetically,  by name, by type, by price and by discount",
+          "Secret quiz game for adding discount",
+          "beautiful animations for the intro, news section, hovering over stuff and probably much more. ",
+          "unique logo, fully made by me in Photoshop",
         ],
         moreProjectImages: [
           "./resources/project-photos/musicare-project-image-slider.jpg",
@@ -461,7 +489,7 @@ const insertBestProjectFeatures = () => {
   projectFeatureList.classList.add("best-features");
   projectFeatureList.innerHTML = "";
   for (let i = 0; i < projectFeaturesArr.length; i++) {
-    const listItem = `<li>${projectFeaturesArr[i]}</li>`;
+    const listItem = `<li>- ${projectFeaturesArr[i]}</li>`;
     projectFeatureList.insertAdjacentHTML("beforeend", listItem);
   }
   return projectFeatureList;
@@ -492,7 +520,7 @@ const insertProjectDetails = (project) => {
     let projectDescription = element.projectDescriptionParagraph;
     let paragraph1 = element.paragraph1;
     let subtitleParagraph = element.subtitleParagraph;
-    let subtitleParagraph2 = element.subtitleParagraph;
+    let subtitleParagraph2 = element.subtitleParagraph2;
     let subtitle1 = element.subtitle1;
     let subtitle2 = element.subtitle2;
     let projectImages;
