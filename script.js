@@ -86,11 +86,11 @@ const experienceChapterTitle = experienceChapter.querySelector(
 // const endChapterTitle = endChapter.querySelector(".chapter-title");
 
 // nav bar buttons functionality
-const skipToChapter = (chapter) => {
-  const trigger = chapter.getBoundingClientRect().top;
-  pageScroll(trigger);
-  index = 9999;
-  console.log(chapter, trigger);
+const skipToChapter = (value) => {
+  // const trigger = chapter.getBoundingClientRect().top;
+  pageScroll(value);
+  // index = 9999;
+  // console.log(chapter, trigger);
 };
 // chapters paragraphs array
 const paragraphsArr = [
