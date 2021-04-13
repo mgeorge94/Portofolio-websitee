@@ -812,6 +812,7 @@ textarea {
 }
 textarea {
   font-family: "Noto Sans JP", sans-serif;
+  height: 200px;
 }
 
 input[type="submit"] {

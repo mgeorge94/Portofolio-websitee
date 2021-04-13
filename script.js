@@ -62,7 +62,7 @@ const showChapters = () => {
       chapter.classList.remove("show");
     }
     //  disabled for testing puprposes
-    // listenForMouseEnter();
+    listenForMouseEnter();
   });
 };
 
@@ -173,7 +173,7 @@ const listenForMouseEnter = () => {
   });
 };
 //disabld or testing purposes
-// listenForMouseEnter();
+listenForMouseEnter();
 
 // progressbar
 
