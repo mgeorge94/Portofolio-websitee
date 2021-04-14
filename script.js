@@ -166,15 +166,22 @@ const autoWriteText = (chapter) => {
 //make body have no click events and a grayscale tone
 const blockBodyEvents = () => {
   const bodyEl = document.getElementsByTagName("BODY")[0];
+  const navbar = document.querySelector(".nav-container");
+
   bodyEl.style.overflow = "hidden";
-  bodyEl.style.filter = "grayscale(100%)";
+  bodyEl.style.filter = "grayscale(1)";
   bodyEl.style.transition = "filter 0.7s ease-in";
   bodyEl.style.pointerEvents = "none";
+  navbar.style.display = "none";
 };
 const normalBodyEvents = () => {
   const bodyEl = document.getElementsByTagName("BODY")[0];
+  const navbar = document.querySelector(".nav-container");
   bodyEl.style.overflowY = "auto";
-  bodyEl.style.filter = "grayscale(0%)";
+  bodyEl.style.filter = "none";
+
+  navbar.style.display = "flex";
+
   bodyEl.style.transition = "filter 0.7s ease-in";
   bodyEl.style.pointerEvents = "auto";
   index = 1;
@@ -376,6 +383,7 @@ const clickRightBrn = () => {
   const projectsContainer = document.querySelector(".project-container");
   const rightArrowBtn = projectsContainer.querySelector(".fa-angle-right");
   rightArrowBtn.addEventListener("click", () => {
+    console.log("smth good");
     changeProject(projectsArr);
     // showProjectDetails();
   });
@@ -441,7 +449,7 @@ const projectsArr = [
       {
         title: "Musicare",
         projectDescriptionParagraph:
-          "I started this project in order to make the transition,  from being a full time flute player to a ambitious programmer, smoother. And also I thought it was an unique,  long-awaited and needed idea-implementation  for my country. You can check it out <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a>. ",
+          "I started this project in order to make the transition,  from being a full time flute player to a ambitious programmer, smoother. And also I thought it was an unique,  long-awaited and needed idea-implementation  for my country. The website it's made entirely by me,   with Html, Css and Javascript. No Wordpress, no React, nada.  You can check it out <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a>. ",
         paragraph1:
           "  Ok. In the pictures above you can see some of the highlights from the website , but not all of them. As i said, this project is a fully functional website with lots of features that i will brag about down bellow",
         subtitle1: "chalanges",
@@ -536,7 +544,7 @@ const insertProjectDetails = (project) => {
     //insertHtml
     const projectDetailsHTML = `
     <i class="fas fa-angle-left"></i>
-        <h1 class="project-title">${title}</h1>
+        <h1 class="project-title ">${title}</h1>
         <p class="description project-description">
           ${projectDescription}
         </p>
