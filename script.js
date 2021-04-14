@@ -9,14 +9,20 @@ const pageScroll = (value) => {
 (showNavLinks = () => {
   const navBtn = document.querySelector(".fa-bars");
   const navLinks = document.querySelector(".navbar-links");
-  const navContainer = document.querySelector(".nav-container");
-  navBtn.addEventListener("click", () => {
+  const bodyEl = document.getElementsByTagName("BODY")[0];
+
+  navBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
     if (!navLinks.classList.contains("active")) {
       navLinks.classList.add("active");
       // navContainer.style.height = "18rem";
     } else {
       navLinks.classList.remove("active");
     }
+  });
+  bodyEl.addEventListener("click", () => {
+    navLinks.classList.remove("active");
   });
 })();
 //function that randomly changes accent color on click
@@ -75,7 +81,7 @@ const showChapters = () => {
       chapter.classList.remove("show");
     }
     //  disabled for testing puprposes
-    // listenForMouseEnter();
+    listenForMouseEnter();
   });
 };
 
@@ -126,12 +132,12 @@ const paragraphsArr = [
     name: "curriculum",
     paragraph: ` "The JavaScript guru's from the internet called to me so I enrolled in a few courses from CodeCademy, Pluralsight and WantSome. There was also some handsome sensei who helped me along the way but he wishes to remain annonimus"`,
   },
-  {
-    name: "end",
-    paragraph: ` "if (wannaGetThingsDoneRight===true){
-      formBtn.addEventListener("click",call(murgociGeorge))
-    }else return;"`,
-  },
+  // {
+  //   name: "end",
+  //   paragraph: ` "if (wannaGetThingsDoneRight===true){
+  //     formBtn.addEventListener("click",call(murgociGeorge))
+  //   }else return;"`,
+  // },
 ];
 
 //auto write paragraphs
@@ -187,7 +193,7 @@ const listenForMouseEnter = () => {
   });
 };
 //disabld or testing purposes
-// listenForMouseEnter();
+listenForMouseEnter();
 
 // progressbar
 

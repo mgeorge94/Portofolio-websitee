@@ -9,6 +9,7 @@
 }
 body {
   font-family: "Noto Sans JP", sans-serif;
+  overflow-x: hidden;
 }
 .link {
   color: var(--accent-color);
@@ -101,19 +102,25 @@ body {
   width: 100vw;
   position: relative;
 }
+@media screen and (max-width: 500px) {
+  .header {
+    height: 23rem;
+  }
+}
 .chapter-container {
   filter: drop-shadow(0px 17px 5px rgba(0, 0, 0, 0.6));
   position: relative;
 }
 
 .chapter-left {
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6vw), 0% 100%);
   background-attachment: fixed;
   transform: translateX(-400%);
   transition: transform 0.4s ease-in-out;
 }
 .chapter-right {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 80%);
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 80%); */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 6vw));
   background-attachment: fixed;
   transform: translateX(400%);
   transition: transform 0.4s ease-in-out;
@@ -135,7 +142,6 @@ body {
   color: rgb(255, 255, 255);
   font-size: 8rem;
   padding-left: 2rem;
-
   position: absolute;
   padding-top: 8rem;
   animation: showTitle 2s ease-in-out forwards;
@@ -152,6 +158,7 @@ body {
   display: flex;
   opacity: 0;
 }
+
 #title-name,
 #story-word {
   font-size: 8rem;
@@ -179,23 +186,39 @@ body {
   z-index: 2;
 }
 
-@media (max-width: 900px) {
-  .title {
-    font-size: 6rem;
+@media (max-width: 1200px) {
+  .subtitle {
+    padding-top: 12rem;
   }
+  .title,
   #title-name,
   #story-word {
     font-size: 6rem;
+    white-space: nowrap;
+  }
+  .chapter-left,
+  .chapter-right {
+    background-attachment: scroll;
+  }
+  .paragraph {
+    font-size: 1rem;
+    /* background: lime; */
+    width: 80%;
+    top: 17rem;
   }
 }
 @media (max-width: 500px) {
+  .title {
+    padding-left: 0rem;
+  }
   .title,
   #title-name,
   #story-word {
     font-size: 4rem;
+    white-space: nowrap;
   }
   .subtitle {
-    padding-top: 12.5rem;
+    padding-top: 10rem;
   }
 }
 @keyframes showTitle {
@@ -241,9 +264,17 @@ body {
   display: flex;
   position: absolute;
 }
-@media (max-width: 1200px) {
-  .flute-chapter > .chapter {
-    background-size: 80%;
+@media (max-width: 900px) {
+  .chapter-title {
+    font-size: 6rem;
+  }
+}
+@media (max-width: 500px) {
+  .chapter-title {
+    font-size: 5rem;
+    /* padding-left: 0rem; */
+    /* margin-left: -1rem; */
+    padding-top: 5rem;
   }
 }
 /* bet paragraph */
@@ -256,16 +287,23 @@ body {
 }
 .bet-chapter > .chapter-right {
   background-color: #060709;
-  background-image: url(../resources/the-bet111.jpg);
-  background-size: 100%;
+  background-image: url(../resources/trials.jpg);
+  background-size: 30%;
   background-position: left center;
   background-repeat: no-repeat;
+}
+@media screen and (max-width: 1300px) {
+  .bet-chapter > .chapter-right {
+    background-image: url(../resources/the-bet-small.jpg);
+    background-size: 40%;
+  }
 }
 
 .chapter-title.right {
   right: 7rem;
-  padding-top: 17rem;
+  padding-top: 14rem;
 }
+
 .chapter-right p {
   padding-top: 5rem;
 }
@@ -286,6 +324,20 @@ body {
   position: absolute;
   z-index: 1;
 }
+.curriculum-chapter .chapter-title.right {
+  padding-top: 9rem;
+}
+.curriculum-chapter p {
+  padding-top: 3rem;
+}
+@media screen and (max-width: 900px) {
+  .curriculum-chapter .chapter-title.right {
+    padding-top: 5rem;
+  }
+  .curriculum-chapter p {
+    padding-top: 1rem;
+  }
+}
 /* progressbar  */
 /* ////////////////////// */
 .ring-container {
@@ -295,6 +347,11 @@ body {
   left: 2rem;
   display: flex;
   transform: rotate(6deg);
+}
+@media screen and (max-width: 950px) {
+  .ring-container {
+    display: none;
+  }
 }
 .ring {
   padding-left: 2rem;
@@ -541,6 +598,14 @@ body {
   perspective: 1000px;
   /* background: lime; */
 }
+@media screen and (max-width: 950px) {
+  .projects-carousel-container {
+    top: 17rem;
+    width: 100vw;
+    /* background: lime; */
+    align-self: center;
+  }
+}
 .project-container {
   /* background: lime; */
   height: 100%;
@@ -561,6 +626,11 @@ body {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 0rem 2rem 1rem 2rem;
+}
+@media screen and (max-width: 950px) {
+  .project-card {
+    align-self: center;
+  }
 }
 @keyframes rotation {
   0% {
@@ -686,8 +756,7 @@ body {
 .social-link:hover {
   filter: brightness(150%);
 }
-.label-github,
-.label-linked-in {
+.label-github {
   color: white;
   font-size: 1.2rem;
   font-style: italic;
@@ -698,9 +767,7 @@ body {
 .label-github {
   left: -1.5rem;
 }
-.label-linked-in {
-  left: 5rem;
-}
+
 /* details about projects */
 .project-details-container {
   width: 100%;
@@ -853,6 +920,14 @@ body {
   background-color: #f2f2f2;
   padding: 20px;
 }
+@media screen and (max-width: 900px) {
+  .form-container {
+    align-self: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22rem;
+  }
+}
 .form-container h4 {
   font-size: 2rem;
   color: var(--accent-color);
@@ -894,4 +969,21 @@ input[type="submit"]:hover {
   position: absolute;
   margin-left: 14rem;
   margin-top: 10rem;
+}
+.label-linked-in {
+  color: white;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+  bottom: 6.4rem;
+  right: 6rem;
+  transform: rotate(6deg);
+}
+.fa-linkedin-in {
+  position: absolute;
+  transform: rotate(6deg);
+
+  right: 1rem;
+  bottom: 5rem;
 }
