@@ -665,3 +665,17 @@ function hideProjectDetails(closeBtn) {
     projectDetailsContainer.style.transform = "translateX(-400%)";
   });
 }
+// click on submit btn
+const submitBtn = document.querySelector(".submit-btn");
+const form = document.querySelectorAll(".form");
+form.forEach((form) => {
+  let isValid = false;
+  submitBtn.addEventListener("click", () => {
+    isValid = form.checkValidity();
+    if (isValid === true) {
+      setTimeout(() => {
+        pageScroll(3800);
+      }, 2000);
+    }
+  });
+});

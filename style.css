@@ -158,7 +158,6 @@ body {
   animation: showTitle 2s ease-in-out forwards;
   display: flex;
   position: absolute;
-  z-index: -1;
 }
 .subtitle {
   padding-top: 13rem;
@@ -169,11 +168,6 @@ body {
   animation-delay: 1s;
   display: flex;
   opacity: 0;
-}
-.header-animation {
-  width: 20rem;
-  height: 100%;
-  background: lime;
 }
 
 #title-name,
@@ -272,6 +266,7 @@ body {
     left: 3rem;
   }
 }
+
 /* first chapter */
 .flute-chapter {
   top: -7rem;
@@ -1113,4 +1108,8 @@ input[type="submit"]:hover {
 
   right: 1rem;
   bottom: 5rem;
+}
+.thankyou_message {
+  font-size: 0.6rem;
+  padding-top: 2rem;
 }
