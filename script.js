@@ -383,7 +383,6 @@ const clickRightBrn = () => {
   const projectsContainer = document.querySelector(".project-container");
   const rightArrowBtn = projectsContainer.querySelector(".fa-angle-right");
   rightArrowBtn.addEventListener("click", () => {
-    console.log("smth good");
     changeProject(projectsArr);
     // showProjectDetails();
   });
@@ -414,12 +413,12 @@ const projectsArr = [
           "When I started working on this website I had no idea what I wanted to do. Or rather, I had to many ideas and didn't know which one to choose. After a brainstorming session a arrived at the conclusion that this website should reflect my personality and the visual effects, text, little jokes, even the Mafia:The city of lost heaven reference (Kudos to you  if you got it ), all reflect my personality.",
         paragraph1:
           " The pictures above reflect what I think are the best aesthetic choices I made on this website  but not the hardest things to do.In other words, those are the thing I flex with to my mom.",
-        subtitle1: "Chalanges",
+        subtitle1: "Challenges",
         subtitleParagraph:
           "Oh... the auto-typing effect. I wanted to implement this in a project for a while but it was like it wasn't making sense form a logical perspective. But here, i embraced the storytelling  way of presenting my message and i think the auto-typing effect   fits right in.",
         subtitle2: "How i Overcome them",
         subtitleParagraph2:
-          "After trying to set up a trigger point  for the function that types the text to run, and failing  miserably, I started thinking about mouse event listeners for each card. At the time of writing this, I probably switched between mousemoove, mouseenter and mouseover more than 10 times... Probably in a few years I will laugh at the problems i encountered now but for 4 months of experience, i think is preatty good.  ",
+          "After trying to set up a trigger point  for the function that types the text to run, and failing  miserably, I started thinking about mouse event listeners for each card. At the time of writing this, I probably switched between mousemoove, mouseenter and mouseover more than 10 times... Probably in a few years I will laugh at the problems i encountered now but for 4 months of experience, i think is pretty good.  ",
 
         bestFeatures: [
           "Modern design that fully translates  my personality ",
@@ -427,12 +426,14 @@ const projectsArr = [
           "Beautiful 3d animation  on hover for the project cards in  the experience chapter",
           "auto typing effect with screen freeze and  black and white transition for added  nostalgia effect and emphasising the storytelling mood ",
           "The amazing parallax effect that even now, then i know how its done, makes me go 'wow'",
+          "working contact form",
         ],
         moreProjectImages: [
-          `./resources/project-photos/musicare-project-image-slider.jpg`,
-          `./resources/project-photos/musicare-project-grid-photo.jpg`,
-          `./resources/project-photos/musicare-project-hero-photo.jpg`,
-          `./resources/project-photos/checkout-form.jpg`,
+          `./resources/project-photos/Portofolio-project/quote.jpg`,
+          `./resources/project-photos/Portofolio-project/certifications.jpg`,
+          `./resources/project-photos/Portofolio-project/form.jpg`,
+          `./resources/project-photos/Portofolio-project/level.jpg`,
+          `./resources/project-photos/Portofolio-project/project.jpg`,
         ],
       },
     ],
@@ -452,7 +453,7 @@ const projectsArr = [
           "I started this project in order to make the transition,  from being a full time flute player to a ambitious programmer, smoother. And also I thought it was an unique,  long-awaited and needed idea-implementation  for my country. The website it's made entirely by me,   with Html, Css and Javascript. No Wordpress, no React, nada.  You can check it out <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a>. ",
         paragraph1:
           "  Ok. In the pictures above you can see some of the highlights from the website , but not all of them. As i said, this project is a fully functional website with lots of features that i will brag about down bellow",
-        subtitle1: "chalanges",
+        subtitle1: "Challenges",
         subtitleParagraph: `The thing is .. On such a big project there  are bound to be things that  drive you crazy each commit. And please keep in mind that, at the time i had like 0h of  real experience . So, with that in mind, here is a list with things that MADE ME A BETTER PROGRAMMER in an attempt to fixing them:  
         <ul>
         <li>- the split landing page</li>
@@ -467,7 +468,7 @@ const projectsArr = [
         subtitleParagraph2: ` First I want to say that,  after 4 months, when i finally finished the project, i fell in love with the programing way of thinking about problems.
           <h6>About fixes, the biggest problem was the filter for instruments because it's so complex. And after figuring out how to filter the instruments, I lost all the functionality when a instrument card was clicked. So I ended up repainting the whole instruments grid and calling the functions i needed for functionality inside the repaint function.</h6>
           <h6>The quiz was also pretty difficult to implement but  the way i structured my code  with all the questions and answers is pretty API-like. So, now i can flex about being able to filter thing from an API.</h6>
-          <h6>The split landing page that implies that there is a different version of that website under each page, was preatty simple to do. I made two functions that painted on the screen only the things i needed for that specific website and called them through HTML.
+          <h6>The split landing page that implies that there is a different version of that website under each page, was pretty simple to do. I made two functions that painted on the screen only the things i needed for that specific website and called them through HTML.
           About the dry part.. there is always more work .
           </h6>
            `,
@@ -479,6 +480,7 @@ const projectsArr = [
           "Secret quiz game for adding discount",
           "beautiful animations for the intro, news section, hovering over stuff and probably much more. ",
           "unique logo, fully made by me in Photoshop",
+          "working contact and checkout form",
         ],
         moreProjectImages: [
           "./resources/project-photos/musicare-project-image-slider.jpg",
@@ -489,10 +491,49 @@ const projectsArr = [
       },
     ],
   },
+
+  {
+    name: "Quiz game",
+    paragraphCard:
+      "This is for the HR people who probably don't have the time to look at my very complex Musicare project and it's a  reason why they should. ",
+    picture1: `./resources/project-photos/quiz-project/quiz-questions.jpg`,
+    picture2: `./resources/project-photos/quiz-project/quiz-rules.jpg`,
+    picture3: `./resources/project-photos/quiz-project/quiz-wrong-answer.jpg`,
+    picture4: `./resources/project-photos/quiz-project/quiz-results.jpg `,
+
+    seeMoreContainer: [
+      {
+        title: "Quiz game",
+        projectDescriptionParagraph:
+          "As i said before. The quiz game is parte of a bigger project called Musicare, and it serves as a chance for a discount if the player wins. Below I will explain some of the functionality i implemented and why.",
+        paragraph1: "",
+        subtitle1: "Challenges",
+        subtitleParagraph:
+          "Searching through the array of answers was awful. I felt like having a correct answer somewhere in the array of objects and checking each answer against it seemed like to much ram power with no real result ",
+        subtitle2: "How I filtered the answers",
+
+        subtitleParagraph2:
+          "Well. pretty simple actually. I gave the correct answer a correct key with a value of either correct or false, and filter that way. Now, thinking back, the false answer didn't have to have a correct propriety but .. yeah. that was my way of thinking  after like 3months of experience. You can check out the game  <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a> by pressing on the Musicare hero text. And... the code is on Github under the musicare project  ",
+
+        bestFeatures: [
+          "The questions show up in a random order ",
+          "There is a time limit on every question and after it passes, the buttons become unclickable.",
+          "The game shows you the correct answer if you get it wrong",
+          "There is a counter that keeps track of every right answer ",
+          "Confetti  if you get  at least 9/10 answers right",
+        ],
+        moreProjectImages: [
+          `./resources/project-photos/quiz-project/quiz-rules.jpg`,
+          `./resources/project-photos/quiz-project/quiz-questions.jpg`,
+
+          `./resources/project-photos/quiz-project/quiz-wrong-answer.jpg`,
+          `./resources/project-photos/quiz-project/quiz-results.jpg `,
+        ],
+      },
+    ],
+  },
 ];
 const reverseProjectsArr = projectsArr.reverse();
-let projectIndex = 0;
-const projectNames = [];
 let projectFeaturesArr;
 let moreProjectImages;
 
@@ -563,7 +604,7 @@ const insertProjectDetails = (project) => {
           ${subtitleParagraph2}
         </p>
         <h5 class="project-subtitle features">Most interesting features</h5>
-     
+
       `;
     projectDetailsContainer.innerHTML = projectDetailsHTML;
 
@@ -571,31 +612,36 @@ const insertProjectDetails = (project) => {
     const projectFeatureList = insertBestProjectFeatures();
     projectImages = insertMoreProjectImages(imagesGrid);
     projectDetailsContainer.appendChild(projectFeatureList);
-    // projectDetailsContainer.appendChild(projectImages);
+    // projectDetailsContainer.appendChild(projectImages);projectIrefrt
     const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left ");
     hideProjectDetails(closeBtn);
   });
 };
 
 ///////////////
+let counter = 0;
+
 // function that recreates project  html every time is called
 const insertNextProjects = (arr) => {
   const projectsContainer = document.querySelector(
     ".projects-carousel-container"
   );
-  const currentProjectName = projectNames[projectIndex];
 
-  arr.forEach((project) => {
-    let name = project.name;
-    let paragraphCard = project.paragraphCard;
-    let picture1 = project.picture1;
-    let picture2 = project.picture2;
-    let picture3 = project.picture3;
-    let picture4 = project.picture4;
-    if (!projectNames.includes(name)) {
-      projectNames.push(name);
-    }
-    const newProjectHTML = ` '
+  if (counter >= arr.length) {
+    i = 0;
+    counter = 0;
+  }
+  for (i = 0; i < arr.length; i++) {
+    if (i === counter) {
+      let project = arr[i];
+      let name = project.name;
+      let paragraphCard = project.paragraphCard;
+      let picture1 = project.picture1;
+      let picture2 = project.picture2;
+      let picture3 = project.picture3;
+      let picture4 = project.picture4;
+
+      const newProjectHTML = ` '
     
     <div class="project-container">
              
@@ -618,21 +664,18 @@ const insertNextProjects = (arr) => {
       </div>
     </div>
   </div>`;
-    if (currentProjectName !== name) {
+
       projectsContainer.innerHTML = newProjectHTML;
       insertProjectDetails(project);
     }
-    if (projectIndex >= arr.length) {
-      projectIndex = 0;
-    }
-  });
+  }
+  counter++;
   let seeMoreBtn = document.querySelector(".see-more-btn");
   animateProjectCard();
   clickRightBrn();
   clickLeftBtn();
   showProjectDetails(seeMoreBtn);
 
-  projectIndex++;
   return seeMoreBtn;
 };
 insertNextProjects(projectsArr);
