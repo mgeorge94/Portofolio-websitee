@@ -554,11 +554,61 @@ const insertMoreProjectImages = (imageElGrid) => {
     class="project-details-picture"
     src='${moreProjectImages[i]}' alt=""
   />`;
-
     imageElGrid.insertAdjacentHTML("beforeend", image);
   }
   return imageElGrid;
 };
+// /////////////
+// insert images into slideshow
+const insertImagesInSlideshow = () => {
+  const projectDetailsContainer = document.querySelector(
+    ".project-details-container"
+  );
+  const imageSlideshowContainerHTML = document.createElement("div");
+  imageSlideshowContainerHTML.classList.add("slideshow-container");
+
+  moreProjectImages.forEach((image) => {
+    const imageSlideshowHTML = ` <div class="mySlides fade">
+    <img src="${image}" style="width:100%">
+  </div>`;
+    imageSlideshowContainerHTML.insertAdjacentHTML(
+      "beforeend",
+      imageSlideshowHTML
+    );
+  });
+
+  projectDetailsContainer.appendChild(imageSlideshowContainerHTML);
+
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 4500);
+  }
+};
+//CLICK O IMAGE
+const clickOnProjectDetailsImage = (imagesGrid) => {
+  const images = imagesGrid.querySelectorAll(".project-details-picture");
+  images.forEach((image) => {
+    image.addEventListener("click", () => {
+      const slideshow = (document.querySelector(
+        ".slideshow-container"
+      ).style.display = "block");
+      imagesGrid.style.visibility = "hidden";
+    });
+  });
+};
+////////////////////////////////
 
 const insertProjectDetails = (project) => {
   const projectDetailsContainer = document.querySelector(
@@ -611,10 +661,13 @@ const insertProjectDetails = (project) => {
     const projectFeatureList = insertBestProjectFeatures();
     projectImages = insertMoreProjectImages(imagesGrid);
     projectDetailsContainer.appendChild(projectFeatureList);
+
+    clickOnProjectDetailsImage(imagesGrid);
     // projectDetailsContainer.appendChild(projectImages);projectIrefrt
     const closeBtn = projectDetailsContainer.querySelector(".fa-angle-left ");
     hideProjectDetails(closeBtn);
   });
+  insertImagesInSlideshow();
 };
 
 ///////////////

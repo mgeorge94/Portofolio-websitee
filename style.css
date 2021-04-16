@@ -1017,7 +1017,34 @@ body {
   margin-top: 0rem;
   text-indent: 2rem;
 }
-
+/* image slideshow */
+.slideshow-container {
+  max-width: 70%;
+  position: absolute;
+  top: 44rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: none;
+  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+.mySlides {
+  display: none;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* end chapter */
 .end-chapter {
   z-index: -4;
