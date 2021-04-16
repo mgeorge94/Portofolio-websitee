@@ -343,22 +343,20 @@ const addHoverEffect = () => {
   projectDescription.style.transform = "translateZ(90px)";
 
   seeMoreBtn.style.transform = "translateZ(90px)";
-  firstPhoto.style.transform = "translateZ(200px) ";
-  // firstPhoto.style.transform = "rotate(-5deg)";
-  secondPhoto.style.transform = "translateZ(150px) ";
-  // secondPhoto.style.transform = "rotate(-10deg)";
-  thirdPhoto.style.transform = "translateZ(100px) ";
-  // thirdPhoto.style.transform = "rotate(-15deg)";
+  firstPhoto.style.transform = "translateZ(200px) rotate(-5deg) ";
 
-  fourthPhoto.style.transform = "translateZ(50px) ";
-  // fourthPhoto.style.transform = "rotate(-20deg)";
+  secondPhoto.style.transform = "translateZ(150px) rotate(-10deg) ";
+
+  thirdPhoto.style.transform = "translateZ(100px) rotate(-15deg) ";
+
+  fourthPhoto.style.transform = "translateZ(50px)  rotate(-20deg)";
 };
 const clickOnCardImages = () => {
   let trigger = true;
 
   const allCardImages = document.querySelectorAll(".card-header img");
   allCardImages.forEach((image) => {
-    image.addEventListener("mousemove", () => {
+    image.addEventListener("click", () => {
       if (trigger === true && !image.classList.contains("fixed")) {
         image.style.transform = "translateZ(1000px)";
         trigger = false;
@@ -561,6 +559,7 @@ const insertMoreProjectImages = (imageElGrid) => {
   }
   return imageElGrid;
 };
+
 const insertProjectDetails = (project) => {
   const projectDetailsContainer = document.querySelector(
     ".project-details-container"
@@ -628,20 +627,17 @@ const insertNextProjects = (arr) => {
   );
 
   if (counter >= arr.length) {
-    i = 0;
     counter = 0;
   }
-  for (i = 0; i < arr.length; i++) {
-    if (i === counter) {
-      let project = arr[i];
-      let name = project.name;
-      let paragraphCard = project.paragraphCard;
-      let picture1 = project.picture1;
-      let picture2 = project.picture2;
-      let picture3 = project.picture3;
-      let picture4 = project.picture4;
+  let project = arr[counter];
+  let name = project.name;
+  let paragraphCard = project.paragraphCard;
+  let picture1 = project.picture1;
+  let picture2 = project.picture2;
+  let picture3 = project.picture3;
+  let picture4 = project.picture4;
 
-      const newProjectHTML = ` '
+  const newProjectHTML = ` '
     
     <div class="project-container">
              
@@ -665,10 +661,9 @@ const insertNextProjects = (arr) => {
     </div>
   </div>`;
 
-      projectsContainer.innerHTML = newProjectHTML;
-      insertProjectDetails(project);
-    }
-  }
+  projectsContainer.innerHTML = newProjectHTML;
+  insertProjectDetails(project);
+
   counter++;
   let seeMoreBtn = document.querySelector(".see-more-btn");
   animateProjectCard();
