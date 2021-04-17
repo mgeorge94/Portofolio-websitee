@@ -13,10 +13,8 @@ const pageScroll = (value) => {
 
   navBtn.addEventListener("click", (event) => {
     event.stopPropagation();
-
     if (!navLinks.classList.contains("active")) {
       navLinks.classList.add("active");
-      // navContainer.style.height = "18rem";
     } else {
       navLinks.classList.remove("active");
     }
@@ -70,17 +68,10 @@ const showChapters = () => {
 
     if (chapterTop < triggerBottom) {
       chapter.classList.add("show");
-
-      // autoWriteText(chapter);
-      //   if (!writtenChapters.includes(chapter.dataset.chapter)) {
-      //     index = 1;
-      //   } else {
-      //     index = 999999999;
-      //   }
     } else {
       chapter.classList.remove("show");
     }
-    //  disabled for testing puprposes
+
     listenForMouseEnter();
   });
 };
@@ -103,13 +94,12 @@ const experienceChapterTitle = experienceChapter.querySelector(
   ".chapter-title"
 );
 // const endChapterTitle = endChapter.querySelector(".chapter-title");
-
+// bolean value that decides if page can scroll chapter into view
+let scrollable = true;
 // nav bar buttons functionality
 const skipToChapter = (value) => {
-  // const trigger = chapter.getBoundingClientRect().top;
   pageScroll(value);
-  // index = 9999;
-  // console.log(chapter, trigger);
+  scrollable = false;
 };
 // chapters paragraphs array
 const paragraphsArr = [
@@ -132,22 +122,22 @@ const paragraphsArr = [
     name: "curriculum",
     paragraph: ` "The JavaScript guru's from the internet called to me so I enrolled in a few courses from CodeCademy, Pluralsight and WantSome. There was also some handsome sensei who helped me along the way but he wishes to remain annonimus"`,
   },
-  // {
-  //   name: "end",
-  //   paragraph: ` "if (wannaGetThingsDoneRight===true){
-  //     formBtn.addEventListener("click",call(murgociGeorge))
-  //   }else return;"`,
-  // },
 ];
 
 //auto write paragraphs
 const autoWriteText = (chapter) => {
   const paragraphHTML = chapter.querySelector("p");
-  const chapterBottom = chapter.getBoundingClientRect().bottom;
   paragraphsArr.forEach((paragraph) => {
     if (paragraph.name === paragraphHTML.dataset.chapter) {
+      // make page auto scroll
+      if (scrollable === true) {
+        setTimeout(() => {
+          paragraphHTML.scrollIntoView({ behavior: "smooth" }, 200);
+        }, 400);
+      }
       writtenChapters.push(chapter.dataset.chapter);
       chapter.classList.add("done");
+
       blockBodyEvents();
 
       paragraphHTML.innerText = paragraph.paragraph.slice(0, index);
@@ -189,17 +179,42 @@ const normalBodyEvents = () => {
 
 //turn On Auto write Text
 /////////////////////////////////
+// const listenForMouseEnter = () => {
+//   const chapters = document.querySelectorAll(".chapter");
+//   const bottomTrigger = (window.innerHeight / 6) * 5;
+
+//   chapters.forEach(function (chapter) {
+//     let inViewChapter;
+//     chapter.addEventListener("mouseenter", () => {
+//       // //////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /////////////////////////
+//       if (
+//         chapter.classList.contains("show") &&
+//         !chapter.classList.contains("done")
+//       ) {
+//         inViewChapter = chapter;
+//       }
+//       const chapterBottom = inViewChapter.getBoundingClientRect().bottom;
+
+//       if (chapterBottom < bottomTrigger) {
+//         autoWriteText(chapter);
+//       }
+//     });
+//   });
+// };
+//!this works
 const listenForMouseEnter = () => {
   const chapters = document.querySelectorAll(".chapter");
   chapters.forEach(function (chapter) {
-    chapter.addEventListener("mousemove", () => {
+    chapter.addEventListener("mouseenter", () => {
       if (!chapter.classList.contains("done")) {
         autoWriteText(chapter);
       }
     });
   });
 };
-//disabld or testing purposes
+
 listenForMouseEnter();
 
 // progressbar
@@ -275,7 +290,6 @@ const removeCertificateActiveClass = () => {
 })();
 
 // projects
-//movement animation
 
 //moving animation
 const animateProjectCard = () => {
@@ -302,7 +316,6 @@ const animateProjectCard = () => {
     removeHoverEffect();
   });
 };
-// animateProjectCard();
 
 const removeHoverEffect = () => {
   const card = document.querySelector(".project-card");
@@ -335,10 +348,10 @@ const addHoverEffect = () => {
   const thirdPhoto = document.getElementById("third-image");
   const fourthPhoto = document.getElementById("fourth-image");
 
-  // card.style.transition = "all 0.5s ease";
-  // setTimeout(() => {
-  card.style.transition = "none";
-  // }, 1000);
+  card.style.transition = "all 0.5s ease";
+  setTimeout(() => {
+    card.style.transition = "none";
+  }, 1000);
   projectTitle.style.transform = "translateZ(300px)";
   projectDescription.style.transform = "translateZ(90px)";
 
@@ -356,7 +369,7 @@ const clickOnCardImages = () => {
 
   const allCardImages = document.querySelectorAll(".card-header img");
   allCardImages.forEach((image) => {
-    image.addEventListener("click", () => {
+    image.addEventListener("mouseover", () => {
       if (trigger === true && !image.classList.contains("fixed")) {
         image.style.transform = "translateZ(1000px)";
         trigger = false;
@@ -367,30 +380,42 @@ const clickOnCardImages = () => {
     });
   });
 };
-//changeProject
-const changeProject = (arr) => {
-  const card = document.querySelector(".project-card");
-  setTimeout(() => {
-    insertNextProjects(arr);
-  }, 500);
 
-  card.style.animation = "rotation 1s forwards";
+//changeProject
+const changeProject = () => {
+  setTimeout(() => {
+    insertNextProjects();
+  }, 500);
 };
+
 // event listeners for project card btns
 const clickRightBrn = () => {
+  const card = document.querySelector(".project-card");
+
   const projectsContainer = document.querySelector(".project-container");
   const rightArrowBtn = projectsContainer.querySelector(".fa-angle-right");
   rightArrowBtn.addEventListener("click", () => {
-    changeProject(projectsArr);
-    // showProjectDetails();
+    counter++;
+    if (counter >= projectsArr.length) {
+      counter = 0;
+    }
+    changeProject();
+    card.style.animation = "rotationRight 1s forwards";
   });
 };
 const clickLeftBtn = () => {
+  const card = document.querySelector(".project-card");
+
   const projectsContainer = document.querySelector(".project-container");
-  const rightArrowBtn = projectsContainer.querySelector(".fa-angle-left");
-  rightArrowBtn.addEventListener("click", () => {
-    changeProject(reverseProjectsArr);
+  const leftArrowBtn = projectsContainer.querySelector(".fa-angle-left");
+  leftArrowBtn.addEventListener("click", () => {
+    counter--;
+    if (counter < 0) {
+      counter = projectsArr.length - 1;
+    }
+    changeProject();
     // showProjectDetails();
+    card.style.animation = "rotationLeft 1s forwards";
   });
 };
 
@@ -432,6 +457,47 @@ const projectsArr = [
           `./resources/project-photos/Portofolio-project/form.jpg`,
           `./resources/project-photos/Portofolio-project/level.jpg`,
           `./resources/project-photos/Portofolio-project/project.jpg`,
+        ],
+      },
+    ],
+  },
+
+  {
+    name: "Quiz game",
+    paragraphCard:
+      "This is for the HR people who probably don't have the time to look at my very complex Musicare project and it's a  reason why they should. ",
+    picture1: `./resources/project-photos/quiz-project/quiz-questions.jpg`,
+    picture2: `./resources/project-photos/quiz-project/quiz-rules.jpg`,
+    picture3: `./resources/project-photos/quiz-project/quiz-wrong-answer.jpg`,
+    picture4: `./resources/project-photos/quiz-project/quiz-results.jpg `,
+
+    seeMoreContainer: [
+      {
+        title: "Quiz game",
+        projectDescriptionParagraph:
+          "As i said before. The quiz game is parte of a bigger project called Musicare, and it serves as a chance for a discount if the player wins. Below I will explain some of the functionality i implemented and why.",
+        paragraph1: "",
+        subtitle1: "Challenges",
+        subtitleParagraph:
+          "Searching through the array of answers was awful. I felt like having a correct answer somewhere in the array of objects and checking each answer against it seemed like to much ram power with no real result ",
+        subtitle2: "How I filtered the answers",
+
+        subtitleParagraph2:
+          "Well. pretty simple actually. I gave the correct answer a correct key with a value of either correct or false, and filter that way. Now, thinking back, the false answer didn't have to have a correct propriety but .. yeah. that was my way of thinking  after like 3months of experience. You can check out the game  <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a> by pressing on the Musicare hero text. And... the code is on Github under the musicare project  ",
+
+        bestFeatures: [
+          "The questions show up in a random order ",
+          "There is a time limit on every question and after it passes, the buttons become unclickable.",
+          "The game shows you the correct answer if you get it wrong",
+          "There is a counter that keeps track of every right answer ",
+          "Confetti  if you get  at least 9/10 answers right",
+        ],
+        moreProjectImages: [
+          `./resources/project-photos/quiz-project/quiz-rules.jpg`,
+          `./resources/project-photos/quiz-project/quiz-questions.jpg`,
+
+          `./resources/project-photos/quiz-project/quiz-wrong-answer.jpg`,
+          `./resources/project-photos/quiz-project/quiz-results.jpg `,
         ],
       },
     ],
@@ -485,47 +551,6 @@ const projectsArr = [
           "./resources/project-photos/musicare-project-grid-photo.jpg",
           "./resources/project-photos/musicare-project-hero-photo.jpg",
           "./resources/project-photos/checkout-form.jpg",
-        ],
-      },
-    ],
-  },
-
-  {
-    name: "Quiz game",
-    paragraphCard:
-      "This is for the HR people who probably don't have the time to look at my very complex Musicare project and it's a  reason why they should. ",
-    picture1: `./resources/project-photos/quiz-project/quiz-questions.jpg`,
-    picture2: `./resources/project-photos/quiz-project/quiz-rules.jpg`,
-    picture3: `./resources/project-photos/quiz-project/quiz-wrong-answer.jpg`,
-    picture4: `./resources/project-photos/quiz-project/quiz-results.jpg `,
-
-    seeMoreContainer: [
-      {
-        title: "Quiz game",
-        projectDescriptionParagraph:
-          "As i said before. The quiz game is parte of a bigger project called Musicare, and it serves as a chance for a discount if the player wins. Below I will explain some of the functionality i implemented and why.",
-        paragraph1: "",
-        subtitle1: "Challenges",
-        subtitleParagraph:
-          "Searching through the array of answers was awful. I felt like having a correct answer somewhere in the array of objects and checking each answer against it seemed like to much ram power with no real result ",
-        subtitle2: "How I filtered the answers",
-
-        subtitleParagraph2:
-          "Well. pretty simple actually. I gave the correct answer a correct key with a value of either correct or false, and filter that way. Now, thinking back, the false answer didn't have to have a correct propriety but .. yeah. that was my way of thinking  after like 3months of experience. You can check out the game  <a href='https://www.musicare.ml' target='_blank' class ='link'>here</a> by pressing on the Musicare hero text. And... the code is on Github under the musicare project  ",
-
-        bestFeatures: [
-          "The questions show up in a random order ",
-          "There is a time limit on every question and after it passes, the buttons become unclickable.",
-          "The game shows you the correct answer if you get it wrong",
-          "There is a counter that keeps track of every right answer ",
-          "Confetti  if you get  at least 9/10 answers right",
-        ],
-        moreProjectImages: [
-          `./resources/project-photos/quiz-project/quiz-rules.jpg`,
-          `./resources/project-photos/quiz-project/quiz-questions.jpg`,
-
-          `./resources/project-photos/quiz-project/quiz-wrong-answer.jpg`,
-          `./resources/project-photos/quiz-project/quiz-results.jpg `,
         ],
       },
     ],
@@ -672,17 +697,17 @@ const insertProjectDetails = (project) => {
 
 ///////////////
 let counter = 0;
+// increments
+const plusIncrement = counter + 1;
+const minusIncrement = counter - 1;
 
 // function that recreates project  html every time is called
-const insertNextProjects = (arr) => {
+const insertNextProjects = () => {
   const projectsContainer = document.querySelector(
     ".projects-carousel-container"
   );
 
-  if (counter >= arr.length) {
-    counter = 0;
-  }
-  let project = arr[counter];
+  let project = projectsArr[counter];
   let name = project.name;
   let paragraphCard = project.paragraphCard;
   let picture1 = project.picture1;
@@ -717,7 +742,7 @@ const insertNextProjects = (arr) => {
   projectsContainer.innerHTML = newProjectHTML;
   insertProjectDetails(project);
 
-  counter++;
+  // counter++;
   let seeMoreBtn = document.querySelector(".see-more-btn");
   animateProjectCard();
   clickRightBrn();
@@ -726,7 +751,7 @@ const insertNextProjects = (arr) => {
 
   return seeMoreBtn;
 };
-insertNextProjects(projectsArr);
+insertNextProjects();
 
 // details abot projects
 function showProjectDetails(seeMoreBtn) {

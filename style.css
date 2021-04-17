@@ -187,6 +187,7 @@ body {
   font-weight: 200;
   font-style: italic;
   color: white;
+  padding: 3rem;
 
   width: 30%;
   position: relative;
@@ -696,7 +697,7 @@ body {
     align-self: center;
   }
 }
-@keyframes rotation {
+@keyframes rotationRight {
   0% {
     transform: rotateY(0deg);
   }
@@ -708,6 +709,20 @@ body {
   } */
   100% {
     transform: rotateY(359deg);
+  }
+}
+@keyframes rotationLeft {
+  0% {
+    transform: rotateY(359deg);
+  }
+  /* 50% {
+    transform: rotateY(359deg);
+  }
+  51% {
+    transform: rotateY(0deg);
+  } */
+  100% {
+    transform: rotateY(0deg);
   }
 }
 .card-header {
