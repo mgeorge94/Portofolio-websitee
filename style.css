@@ -10,6 +10,7 @@
 body {
   font-family: "Noto Sans JP", sans-serif;
   overflow-x: hidden;
+  background: rgb(150, 146, 146);
 }
 .link {
   color: var(--accent-color);
@@ -43,10 +44,12 @@ body {
   }
 }
 .brand-title {
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: bold;
-  color: white;
+  position: RELATIVE;
+  top: 0rem;
+  left: 1rem;
+  max-height: 3rem;
 }
+
 .navbar-links ul {
   margin: 0;
   padding: 0;
@@ -1062,7 +1065,10 @@ body {
 }
 /* end chapter */
 .end-chapter {
-  z-index: -4;
+  z-index: -2;
+  position: absolute;
+
+  display: block;
 }
 .end-chapter > .chapter {
   height: 50rem;
@@ -1072,11 +1078,14 @@ body {
   background-size: 50%;
   overflow: hidden;
   background-position: bottom right;
+  position: absolute;
+  display: block;
 }
 
 @media (max-width: 1000px) {
   .end-chapter {
     top: 2;
+    position: relative;
   }
 }
 .end-chapter > .chapter {

@@ -93,7 +93,7 @@ const curriculumChapterTitle = curriculumChapter.querySelector(
 const experienceChapterTitle = experienceChapter.querySelector(
   ".chapter-title"
 );
-// const endChapterTitle = endChapter.querySelector(".chapter-title");
+
 // bolean value that decides if page can scroll chapter into view
 let scrollable = true;
 // nav bar buttons functionality
@@ -178,32 +178,7 @@ const normalBodyEvents = () => {
 };
 
 //turn On Auto write Text
-/////////////////////////////////
-// const listenForMouseEnter = () => {
-//   const chapters = document.querySelectorAll(".chapter");
-//   const bottomTrigger = (window.innerHeight / 6) * 5;
 
-//   chapters.forEach(function (chapter) {
-//     let inViewChapter;
-//     chapter.addEventListener("mouseenter", () => {
-//       // //////////////////////////////////////////////////////////////////////////////////////////////////
-
-//       /////////////////////////
-//       if (
-//         chapter.classList.contains("show") &&
-//         !chapter.classList.contains("done")
-//       ) {
-//         inViewChapter = chapter;
-//       }
-//       const chapterBottom = inViewChapter.getBoundingClientRect().bottom;
-
-//       if (chapterBottom < bottomTrigger) {
-//         autoWriteText(chapter);
-//       }
-//     });
-//   });
-// };
-//!this works
 const listenForMouseEnter = () => {
   const chapters = document.querySelectorAll(".chapter");
   chapters.forEach(function (chapter) {
@@ -394,11 +369,10 @@ const clickRightBrn = () => {
 
   const projectsContainer = document.querySelector(".project-container");
   const rightArrowBtn = projectsContainer.querySelector(".fa-angle-right");
+
   rightArrowBtn.addEventListener("click", () => {
     counter++;
-    if (counter >= projectsArr.length) {
-      counter = 0;
-    }
+
     changeProject();
     card.style.animation = "rotationRight 1s forwards";
   });
@@ -409,10 +383,12 @@ const clickLeftBtn = () => {
   const projectsContainer = document.querySelector(".project-container");
   const leftArrowBtn = projectsContainer.querySelector(".fa-angle-left");
   leftArrowBtn.addEventListener("click", () => {
-    counter--;
-    if (counter < 0) {
-      counter = projectsArr.length - 1;
+    if (counter <= 0) {
+      // counter = projectsArr.length - 1;
+      leftArrowBtn.style.display = "none";
     }
+    counter--;
+
     changeProject();
     // showProjectDetails();
     card.style.animation = "rotationLeft 1s forwards";
@@ -697,9 +673,6 @@ const insertProjectDetails = (project) => {
 
 ///////////////
 let counter = 0;
-// increments
-const plusIncrement = counter + 1;
-const minusIncrement = counter - 1;
 
 // function that recreates project  html every time is called
 const insertNextProjects = () => {
@@ -741,8 +714,15 @@ const insertNextProjects = () => {
 
   projectsContainer.innerHTML = newProjectHTML;
   insertProjectDetails(project);
-
-  // counter++;
+  // check if project is first or last
+  const rightArrowBtn = projectsContainer.querySelector(".fa-angle-right");
+  const leftArrowBtn = projectsContainer.querySelector(".fa-angle-left");
+  if (counter === projectsArr.length - 1) {
+    rightArrowBtn.style.display = "none";
+  }
+  if (counter === 0) {
+    leftArrowBtn.style.display = "none";
+  }
   let seeMoreBtn = document.querySelector(".see-more-btn");
   animateProjectCard();
   clickRightBrn();
