@@ -11,7 +11,17 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   overflow-x: hidden;
   background: rgb(150, 146, 146);
+  /* -ms-overflow-style: none; 
+  scrollbar-width: none; */
 }
+
+/* make scrollbar invisible */
+
+/* ::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+} */
+
 .link {
   color: var(--accent-color);
   transition: color 1s ease-in-out;

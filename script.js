@@ -398,6 +398,46 @@ const clickLeftBtn = () => {
 // array of projects
 const projectsArr = [
   {
+    name: "ChillBox",
+    paragraphCard:
+      "There is a new thing I am working on and that is ChillBox. A free Netflix alternative based on api's. Note that the app is still under developement. This is just a teaser",
+    picture1: `./resources/project-photos/ChillBox-project/navmenu.jpg`,
+    picture2: `./resources/project-photos/ChillBox-project/navmenu.jpg `,
+    picture3: `./resources/project-photos/ChillBox-project/cover-image.jpg `,
+    picture4: `./resources/project-photos/ChillBox-project/waiting.jpg`,
+    seeMoreContainer: [
+      {
+        title: "ChillBox",
+        projectDescriptionParagraph:
+          "ChillBox is supposed to be by way of working for the first time with a complex api. Even though it'll be probably be illegal in about 1459 countries because it's based on a movie torrent api, I think it's a fun way of practicing. ",
+        paragraph1:
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida ante risus, at sagittis eros commodo et. Nulla dignissim, tellus non luctus ornare, metus diam fermentum risus, nec fringilla urna turpis eget sem. Curabitur vitae mauris mollis, pulvinar libero a, lacinia augue. Maecenas et mauris vitae sapien bibendum fermentum ut sit amet orci. Mauris efficitur tortor vitae est posuere semper. Praesent vitae scelerisque neque, et ullamcorper tortor. Aliquam erat volutpat. Nullam porttitor ac velit pharetra molestie. Integer dictum mi non orci bibendum pharetra.",
+        subtitle1: "Challenges",
+        subtitleParagraph:
+          "Nam diam nunc, molestie eget leo consectetur, laoreet hendrerit turpis. Cras aliquet, ex in elementum mattis, libero eros vehicula lectus, id pellentesque neque nulla vitae orci. Vivamus at lorem a lacus commodo commodo id et ligula. Vivamus scelerisque turpis quis dolor efficitur fermentum. Fusce ",
+        subtitle2: "How i Overcome them",
+        subtitleParagraph2:
+          "Nam diam nunc, molestie eget leo consectetur, laoreet hendrerit turpis. Cras aliquet, ex in elementum mattis, libero eros vehicula lectus, id pellentesque neque nulla vitae orci. Vivamus at lorem a lacus commodo commodo id et ligula. Vivamus scelerisque turpis quis dolor efficitur fermentum. Fusce ",
+
+        bestFeatures: [
+          "Modern design that fully translates  my personality ",
+          "Accent color that dynamically changes on every click ",
+          "Beautiful 3d animation  on hover for the project cards in  the experience chapter",
+          "auto typing effect with screen freeze and  black and white transition for added  nostalgia effect and emphasising the storytelling mood ",
+          "The amazing parallax effect that even now, then i know how its done, makes me go 'wow'",
+          "working contact form",
+        ],
+        moreProjectImages: [
+          `./resources/project-photos/ChillBox-project/navmenu.jpg`,
+          `./resources/project-photos/ChillBox-project/navmenu.jpg `,
+          `./resources/project-photos/ChillBox-project/cover-image.jpg `,
+          `./resources/project-photos/ChillBox-project/waiting.jpg`,
+          ,
+        ],
+      },
+    ],
+  },
+  {
     name: "Portofolio Website",
     paragraphCard:
       "There is no surprise that my personal portofolio si done by .. well ..me. I included this here because I stumbled upon some interesting problems along the way and  the way I managed to fix the is... at least interesting.",
