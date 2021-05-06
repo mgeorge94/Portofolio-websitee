@@ -176,8 +176,8 @@ const listenForMouseEnter = () => {
  chapters.forEach(function (chapter) {
   chapter.addEventListener('mouseenter', () => {
    if (!chapter.classList.contains('done')) {
-    chapter.scrollIntoView({ behavior: 'smooth' }, 700);
     autoWriteText(chapter);
+    chapter.scrollIntoView({ behavior: 'smooth' }, 700);
    }
   });
  });
