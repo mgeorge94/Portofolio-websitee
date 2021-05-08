@@ -5,7 +5,7 @@ const pageScroll = (value) => {
   behavior: 'smooth',
  });
 };
-//make nav bar change at smallscreen sizes
+//make nav bar change at small screen sizes
 (showNavLinks = () => {
  const navBtn = document.querySelector('.fa-bars');
  const navLinks = document.querySelector('.navbar-links');
@@ -393,7 +393,7 @@ const projectsArr = [
   seeMoreContainer: [
    {
     title: `We'll fix it`,
-    projectDescriptionParagraph: `I first want to say that I adore React. The project was like a path to enlightenment for me because I had the opportunity to shift the way I thought about a project. Also I used some fun stuff that I will tel you about in a minute <a href="https://6093987a8af4e86c82e6722f--vibrant-noether-1d567d.netlify.app/" target='_blank' class ='link'>here</a> `,
+    projectDescriptionParagraph: `I first want to say that I adore React. The project was like a path to enlightenment for me because I had the opportunity to shift the way I thought about a project. Also I used some fun stuff that I will tel you about in a minute <a href="http://www.wellfixitcluj.ro" target='_blank' class ='link'>here</a> `,
     paragraph1:
      'Ok so besides React I used unDraw for images, reactScroll for smoothScrolling, Styled Components for well styling the components, React icons and Beauty Star Rating.',
     subtitle1: 'Challenges',
