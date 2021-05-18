@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murgoci George's Portofolio</title>
+     
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Six+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+<link rel="icon" href="./resources/logo/favicon-64.png"/>
+
+  </head>
+  <body onclick="changeAccentColor()">
+    
+    <div class="nav-container">
+      
+        <img class="brand-title" src="./resources/logo/logo.png" alt="">
+       
+      
+      <i class="fas fa-bars"></i>
+      <div class="navbar-links">
+        <ul>
+          <li onClick="skipToChapter(368)">The Past</li>
+          <li onClick="skipToChapter(608)">The Bet</li>
+          <li onClick="skipToChapter(1120)">The Present</li>
+          <li onClick="skipToChapter(1504)">The Curriculum</li>
+          <li onClick="skipToChapter(2144)">The Experience</li>
+          <li onClick="skipToChapter(3055)">The End</li>
+        </ul>
+      </div>
+      
+    </div>
+   
+    <div class="chapter-container">
+      <div class="header">
+        <div class="title">
+          My name is
+          <h1 id="title-name">George Murgoci</h1>
+        </div>
+  
+
+        <div class="title subtitle">
+          And this is my
+          <h1 id="story-word">story!</h1>
+        </div>
+      </div>
+    </div>
+
+      <!-- flute chapter -->
+      <div class="chapter-container flute-chapter">
+        <div class="chapter-left chapter show" data-chapter="flute">
+          <div class="title chapter-title">The past</div>
+
+          <p data-chapter="flute" class="paragraph fluteParagraph"></p>
+        </div>
+      </div>
+      <!-- bet chapter -->
+      <div class="chapter-container bet-chapter">
+        <div class="chapter-right chapter" data-chapter="bet">
+          <div class="chapter-title right">The bet</div>
+          <p data-chapter="bet" class="paragraph betParagraph">
+            <!-- " Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut
+          sed eveniet dicta mollitia, et voluptate quisquam dignissimos quidem
+          corporis." -->
+          </p>
+        </div>
+      </div>
+      <!-- the it chapter -->
+      <div class="chapter-container present-chapter">
+        <div class="chapter-left chapter" data-chapter="present">
+          <div class="title chapter-title">The present</div>
+
+          <p data-chapter="present" class="paragraph present-Paragraph"></p>
+        </div>
+      </div>
+
+      <!-- the languages chapter -->
+      <div class="chapter-container curriculum-chapter">
+        <div class="chapter-right chapter" data-chapter="curriculum">
+          <div class="chapter-title right">The curriculum</div>
+
+          <p data-chapter="curriculum" class="paragraph present-Paragraph"></p>
+        </div>
+        <!-- cv download btn -->
+        <div class="cv-button-container">
+          <i class="fas fa-file-alt"></i>
+          <div class="medal-container">
+            <i class="fa fa-certificate" aria-hidden="true"></i>
+            <i class="fa fa-certificate small" aria-hidden="true"></i>
+            <i class="fas fa-bacon"></i>
+          </div>
+          <label class="certificates-label" for="">Cerificates</label>
+          <a href="https://www.canva.com/design/DAEdDDrSKgo/j8UDCC3X7bd_I2qE-S_BWA/view?utm_content=DAEdDDrSKgo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" target="_blank"><i class="fas fa-file-pdf"></i></a>
+          <label class="cv-label">CV</label>
+        </div>
+        <!-- ring container -->
+        <div class="ring-container">
+          <div class="ring ring1">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="javascript-cirle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-Js">JavaScript</label>
+            <input
+              data-circle="javascript-cirle"
+              value="70"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+          <div class="ring ring2">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="css-circle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-css">Css</label>
+
+            <input
+              data-circle="css-circle"
+              value="80"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+          <div class="ring ring3">
+            <label class="circle-lable lable-html">HTML</label>
+
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="html-circle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <input
+              data-circle="html-circle"
+              value="90"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+      />
+          </div>
+          <div class="ring ring4">
+            <svg class="progress-ring" width="120" height="120">
+              <circle
+                data-circle="react-circle"
+                class="progress-ring__circle"
+                stroke="var(--accent-color)"
+                stroke-width="5"
+                stroke-linecap="round"
+                fill="#282828"
+                r="52"
+                cx="60"
+                cy="60"
+              />
+            </svg>
+            <label class="circle-lable lable-react">React</label>
+            <input
+              data-circle="react-circle"
+              value="5"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            />
+          </div>
+        </div>
+        <!-- //////////////////////// -->
+        <!-- diplomas-->
+
+        <div class="diplomas-container">
+          <i class="fas fa-angle-right"></i>
+
+          <div data-type="html" class="box">
+            <img src="../resources/diplomas/html-diploma.jpg" alt="" />
+          </div>
+
+          <div data-type="html" data-type="css" class="box">
+            <img src="../resources/diplomas/html-css-git-diploma.jpg" alt="" />
+          </div>
+          <div data-type="jquery" class="box">
+            <img src="../resources/diplomas/jQuery-diploma.jpg" alt="" />
+          </div>
+          <div data-type="html" class="box">
+            <img src="../resources/diplomas/js-diploma.jpg" alt="" />
+          </div>
+          <div data-type="react" class="box">
+            <img src="../resources/diplomas/react-diploma.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter-container experience-chapter">
+      <div class="chapter-left chapter" data-chapter="experience">
+        <div class="chapter-title left">The Experience</div>
+
+        <div class="projects-carousel-container">
+          <div class="project-card"></div>
+        </div>
+      </div>
+
+      <div class="links-container">
+        <a href="https://github.com/mgeorge94" target="_blank">
+          <i class="fa fa-github social-link"></i
+        ></a>
+        <label for="" class="label-github">GitHub</label>
+        
+      </div>
+    </div>
+    <!-- More info about the project -->
+    <div class="project-details-container">
+      <i class="fas fa-angle-left"></i>                            
+      <ul class="best-features">
+   
+      </ul>
+    </div>
+    
+    <div class="chapter-container end-chapter">
+      <div class="chapter-right chapter" data-chapter="end">
+        <div class="chapter-title right">The end</div>
+        <div class="form-container">
+          <form  class="gform" method="post" data-email = "george.murgoci.portofolio@gmail.com" action = "https://script.google.com/macros/s/AKfycbxJI-J8lq-jQN-pEimXHYSnYaL21zHwKSNYWINCZEpwJkbu6cXS/exec">
+        <h4>Wanna work together?</h4>
+        
+            <label for="fname">Tell me  your name</label>
+            <input class ="form" required type="text" id="name" name="name" placeholder="Ex: Bill Smith">
+            <label for="fname">Gimme your email</label>
+            <input   class = "form"required type="email" id="email" name="email" placeholder="Ex: bill4ubaby@sweetpotato.com">
+            
+        
+            
+        
+            <label for="subject">Tell me about your project</label>
+            <textarea class="form" required id="subject" name="project" placeholder="Ex: I wanna make a social media platform so big that Mark Zuckerberg starts crying." ></textarea>
+        
+            <input  class = "submit-btn"type="submit" value="Submit">
+            <div style="display:none" class="thankyou_message">
+              
+              <h2>Perfect! You made the first step towords your dream project. I will get back to you ass soon as possible!
+              </h2>
+             </div>
+          </form>
+        </div>
+
+          <a
+          href="https://www.linkedin.com/in/george-murgoci-954376192/?originalSubdomain=ro"
+          target="_blank"
+          ><i class="fab fa-linkedin-in social-link"></i
+        ></a>
+        <label for="" class="label-linked-in">Linked-In</label>
+        <p data-chapter="end" class="paragraph endParagraph"></p>
+
+    </div>
+    
+    <script data-cfasync="false" type="text/javascript" src="./email/form-submission-handler.js"></script>
+    <script src="script.js"></script>
+    
+  </body>
+</html>
