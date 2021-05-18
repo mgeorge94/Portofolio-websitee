@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Murgoci George's Portofolio</title>
      
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -24,12 +26,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    
 
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="old-style.css" />
 <link rel="icon" href="./resources/logo/favicon-64.png"/>
 
   </head>
-  <body onclick="changeAccentColor()">
+  <body id="body" onclick="changeAccentColor()">
     
     <div class="nav-container">
       
@@ -53,8 +57,8 @@
     <div class="chapter-container">
       <div class="header">
         <div class="title">
-          My name is
-          <h1 id="title-name">George Murgoci</h1>
+          My name is <span>George Murgoci</span>
+          
         </div>
   
 
@@ -78,9 +82,7 @@
         <div class="chapter-right chapter" data-chapter="bet">
           <div class="chapter-title right">The bet</div>
           <p data-chapter="bet" class="paragraph betParagraph">
-            <!-- " Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut
-          sed eveniet dicta mollitia, et voluptate quisquam dignissimos quidem
-          corporis." -->
+       
           </p>
         </div>
       </div>
@@ -217,7 +219,7 @@
             />
           </div>
         </div>
-        <!-- //////////////////////// -->
+      
         <!-- diplomas-->
 
         <div class="diplomas-container">
